@@ -1,13 +1,23 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { HiMenuAlt3, HiX } from 'react-icons/hi'
+import { HiMenuAlt3, HiX, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi'
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa'
 import logo from '../assests/logo.png'
+
+const socials = [
+  { icon: FaFacebookF, href: 'https://www.facebook.com/selections.technologies', label: 'Facebook' },
+  { icon: FaInstagram, href: 'https://www.instagram.com/selections.technologies/?hl=en', label: 'Instagram' },
+  { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/selections-technologies-792b62426/?skipRedirect=true', label: 'LinkedIn' },
+  { icon: FaWhatsapp, href: 'https://wa.me/923003209005', label: 'WhatsApp' },
+]
 
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
+  { to: '/portfolio', label: 'Portfolio' },
   { to: '/courses', label: 'Courses' },
+  { to: '/blog', label: 'Blog' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ]
@@ -23,16 +33,58 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
-        scrolled ? 'shadow-md shadow-slate-200/80 py-2' : 'py-3 border-b border-slate-100'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Top info bar */}
+      <AnimatePresence initial={false}>
+        {!scrolled && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="hidden md:block bg-navy overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-11 flex items-center justify-between text-white">
+              <div className="flex items-center gap-7">
+                <a href="mailto:selectionstechnologies@gmail.com" className="flex items-center gap-2 text-sm font-medium hover:text-brand-cyan transition-colors">
+                  <HiOutlineMail size={17} />
+                  selectionstechnologies@gmail.com
+                </a>
+                <a href="tel:+923003209005" className="flex items-center gap-2 text-sm font-medium hover:text-brand-cyan transition-colors">
+                  <HiOutlinePhone size={17} />
+                  +92 300 3209005
+                </a>
+              </div>
+              <div className="flex items-center gap-4">
+                {socials.map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="text-white hover:text-brand-cyan transition-colors"
+                  >
+                    <Icon size={16} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Main nav */}
+      <div
+        className={`transition-all duration-300 bg-white ${
+          scrolled ? 'shadow-md shadow-slate-200/80 py-2' : 'py-3 border-b border-slate-100'
+        }`}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Selections Technologies" className="h-12 w-auto object-contain" />
+          <img src={logo} alt="Selections Technologies — Web Development Pakistan" className="h-12 w-auto object-contain" width="200" height="48" fetchPriority="high" />
         </Link>
 
         {/* Desktop Nav */}
@@ -69,6 +121,7 @@ export default function Navbar() {
         >
           {menuOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
         </button>
+      </div>
       </div>
 
       {/* Mobile Menu */}

@@ -7,6 +7,7 @@ import {
   HiOutlineLightBulb,
   HiOutlineCheckCircle,
   HiArrowRight,
+  HiArrowDown,
 } from 'react-icons/hi'
 import { FaShopify, FaWordpress, FaGoogle, FaRobot } from 'react-icons/fa6'
 import { MdDesignServices, MdCampaign, MdStorefront, MdSearch } from 'react-icons/md'
@@ -166,7 +167,7 @@ const process = [
 const servicesLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  provider: { '@id': 'https://www.selectionstechnologies.com/#organization' },
+  provider: { '@id': 'https://selectionstechnologies.com/#organization' },
   serviceType: [
     'Web Development', 'WordPress Development', 'Shopify Store Development',
     'E-Commerce Solutions', 'Custom Software Development', 'CRM Development',
@@ -174,7 +175,7 @@ const servicesLd = {
     'Search Engine Optimisation', 'Meta & Google Ads', 'Graphic Designing', 'IT Consulting',
   ],
   areaServed: 'Worldwide',
-  url: 'https://www.selectionstechnologies.com/services',
+  url: 'https://selectionstechnologies.com/services',
 }
 
 export default function Services() {
@@ -189,7 +190,7 @@ export default function Services() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesLd) }} />
 
       {/* ─── Page Hero ────────────────────────────────────── */}
-      <section className="relative pt-32 pb-20 bg-navy overflow-hidden">
+      <section className="relative pt-40 pb-28 bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-40" />
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-blue rounded-full blur-3xl opacity-10 pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-brand-cyan rounded-full blur-3xl opacity-10 pointer-events-none" />
@@ -294,7 +295,10 @@ export default function Services() {
                 <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
                 {i < process.length - 1 && (
-                  <HiArrowRight className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 text-brand-blue text-xl z-10" />
+                  <>
+                    <HiArrowDown className="sm:hidden absolute left-1/2 -bottom-3 -translate-x-1/2 text-brand-blue text-xl z-10 bg-navy rounded-full" />
+                    <HiArrowRight className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 text-brand-blue text-xl z-10 bg-navy rounded-full" />
+                  </>
                 )}
               </motion.div>
             ))}

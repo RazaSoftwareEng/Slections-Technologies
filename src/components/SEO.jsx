@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 
 const SITE_NAME = 'Selections Technologies'
-const BASE_URL = 'https://www.selectionstechnologies.com'
+const BASE_URL = 'https://selectionstechnologies.com'
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`
 
 export default function SEO({
@@ -26,7 +26,7 @@ export default function SEO({
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={url} />
-      {noIndex && <meta name="robots" content="noindex, nofollow" />}
+      <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
 
       {/* Open Graph */}
       <meta property="og:type" content={ogType} />
@@ -36,6 +36,7 @@ export default function SEO({
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={`${SITE_NAME} - IT Solutions Pakistan`} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="en_US" />
 
@@ -45,9 +46,19 @@ export default function SEO({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
 
+      {/* Local / Geo */}
+      <meta name="geo.region" content="PK-PB" />
+      <meta name="geo.placename" content="Lahore, Punjab, Pakistan" />
+      <meta name="geo.position" content="31.5497;74.3436" />
+      <meta name="ICBM" content="31.5497, 74.3436" />
+
       {/* Extra */}
       <meta name="author" content={SITE_NAME} />
       <meta name="theme-color" content="#0F172A" />
+      <meta name="language" content="English" />
+      <meta name="revisit-after" content="7 days" />
+      <meta name="rating" content="General" />
+      <meta name="coverage" content="Worldwide" />
     </Helmet>
   )
 }

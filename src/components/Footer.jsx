@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaWhatsapp } from 'react-icons/fa'
+import { FaFacebookF, FaLinkedinIn, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md'
 import logo from '../assests/logo.png'
 
 const quickLinks = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
+  { to: '/portfolio', label: 'Portfolio' },
   { to: '/courses', label: 'Courses' },
+  { to: '/blog', label: 'Blog' },
   { to: '/about', label: 'About Us' },
   { to: '/contact', label: 'Contact' },
 ]
@@ -21,11 +23,10 @@ const services = [
 ]
 
 const socials = [
-  { icon: FaFacebookF, href: '#', label: 'Facebook' },
-  { icon: FaTwitter, href: '#', label: 'Twitter' },
-  { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
-  { icon: FaInstagram, href: '#', label: 'Instagram' },
-  { icon: FaWhatsapp, href: 'https://wa.me/923043309005', label: 'WhatsApp' },
+  { icon: FaFacebookF, href: 'https://www.facebook.com/selections.technologies', label: 'Facebook' },
+  { icon: FaInstagram, href: 'https://www.instagram.com/selections.technologies/?hl=en', label: 'Instagram' },
+  { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/selections-technologies-792b62426/?skipRedirect=true', label: 'LinkedIn' },
+  { icon: FaWhatsapp, href: 'https://wa.me/923003209005', label: 'WhatsApp' },
 ]
 
 export default function Footer() {
@@ -38,7 +39,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="inline-block mb-4">
               <div className="bg-white rounded-xl px-4 py-2 inline-block shadow-sm">
-                <img src={logo} alt="Selections Technologies" className="h-10 w-auto object-contain" />
+                <img src={logo} alt="Selections Technologies — IT Company Lahore Pakistan" className="h-10 w-auto object-contain" width="180" height="40" loading="lazy" />
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-slate-400 mb-6">

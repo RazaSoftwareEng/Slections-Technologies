@@ -58,13 +58,13 @@ const stats = [
 const aboutLd = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
-  '@id': 'https://www.selectionstechnologies.com/about#webpage',
-  url: 'https://www.selectionstechnologies.com/about',
+  '@id': 'https://selectionstechnologies.com/about#webpage',
+  url: 'https://selectionstechnologies.com/about',
   name: 'About Selections Technologies',
   description:
     'Selections Technologies is a technology company dedicated to delivering high-quality software solutions, modern websites, and innovative digital services.',
-  isPartOf: { '@id': 'https://www.selectionstechnologies.com/#website' },
-  about: { '@id': 'https://www.selectionstechnologies.com/#organization' },
+  isPartOf: { '@id': 'https://selectionstechnologies.com/#website' },
+  about: { '@id': 'https://selectionstechnologies.com/#organization' },
 }
 
 export default function About() {
@@ -79,7 +79,7 @@ export default function About() {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutLd) }} />
       {/* ─── Page Hero ────────────────────────────────────── */}
-      <section className="relative pt-32 pb-20 bg-navy overflow-hidden">
+      <section className="relative pt-40 pb-28 bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-40" />
         <div className="absolute top-10 right-0 w-96 h-96 bg-brand-blue rounded-full blur-3xl opacity-10 pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-80 h-80 bg-brand-cyan rounded-full blur-3xl opacity-10 pointer-events-none" />

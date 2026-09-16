@@ -50,11 +50,11 @@ const initialForm = { name: '', email: '', phone: '', message: '' }
 const contactLd = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  '@id': 'https://www.selectionstechnologies.com/contact#webpage',
-  url: 'https://www.selectionstechnologies.com/contact',
+  '@id': 'https://selectionstechnologies.com/contact#webpage',
+  url: 'https://selectionstechnologies.com/contact',
   name: 'Contact Selections Technologies',
   description: 'Get in touch with Selections Technologies for web development, software solutions, and IT consulting services.',
-  isPartOf: { '@id': 'https://www.selectionstechnologies.com/#website' },
+  isPartOf: { '@id': 'https://selectionstechnologies.com/#website' },
 }
 
 export default function Contact() {
@@ -123,7 +123,7 @@ export default function Contact() {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactLd) }} />
       {/* ─── Page Hero ────────────────────────────────────── */}
-      <section className="relative pt-32 pb-20 bg-navy overflow-hidden">
+      <section className="relative pt-40 pb-28 bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-40" />
         <div className="absolute top-10 left-1/3 w-96 h-96 bg-brand-blue rounded-full blur-3xl opacity-10 pointer-events-none" />
 

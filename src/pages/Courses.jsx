@@ -404,7 +404,7 @@ export default function Courses() {
       />
 
       {/* ─── Hero ─────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-20 bg-navy overflow-hidden">
+      <section className="relative pt-40 pb-28 bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-40" />
         <div className="absolute top-10 right-0 w-96 h-96 bg-brand-blue rounded-full blur-3xl opacity-10 pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-80 h-80 bg-brand-cyan rounded-full blur-3xl opacity-10 pointer-events-none" />
@@ -588,7 +588,7 @@ export default function Courses() {
                 Enroll Now <HiArrowRight />
               </Link>
               <a
-                href="https://wa.me/923043309005"
+                href="https://wa.me/923003209005"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/60 text-white font-semibold rounded-xl hover:bg-white/10 transition-all hover:-translate-y-0.5"

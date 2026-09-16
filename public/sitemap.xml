@@ -5,38 +5,115 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <url>
-    <loc>https://www.selectionstechnologies.com/</loc>
-    <lastmod>2026-06-24</lastmod>
+    <loc>https://selectionstechnologies.com/</loc>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.selectionstechnologies.com/services</loc>
-    <lastmod>2026-06-24</lastmod>
+    <loc>https://selectionstechnologies.com/services</loc>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.selectionstechnologies.com/about</loc>
-    <lastmod>2026-06-24</lastmod>
+    <loc>https://selectionstechnologies.com/portfolio</loc>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.selectionstechnologies.com/contact</loc>
-    <lastmod>2026-06-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.selectionstechnologies.com/courses</loc>
-    <lastmod>2026-06-24</lastmod>
+    <loc>https://selectionstechnologies.com/courses</loc>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/about</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/contact</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog/how-to-build-shopify-store-in-pakistan-2025</loc>
+    <lastmod>2025-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog/wordpress-vs-shopify-which-is-better-for-pakistan</loc>
+    <lastmod>2025-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog/how-much-does-a-website-cost-in-pakistan</loc>
+    <lastmod>2025-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog/best-digital-marketing-strategies-for-pakistani-businesses</loc>
+    <lastmod>2025-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog/how-to-rank-website-on-google-in-pakistan</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog/mobile-app-development-pakistan-native-vs-cross-platform</loc>
+    <lastmod>2025-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog/ai-chatbots-for-business-pakistan-2025</loc>
+    <lastmod>2025-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog/how-to-choose-web-development-agency-in-pakistan</loc>
+    <lastmod>2025-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://selectionstechnologies.com/blog/website-security-essentials-pakistani-businesses</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
