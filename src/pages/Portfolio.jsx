@@ -1,9 +1,26 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
-import { HiExternalLink } from 'react-icons/hi'
+import { HiExternalLink, HiOutlineHome, HiOutlineShoppingCart, HiOutlineCode, HiOutlineDesktopComputer } from 'react-icons/hi'
+import { MdOutlineRestaurant } from 'react-icons/md'
 
-const BASE = 'https://alirazadeveloper75.github.io/portfolio/'
+const categoryIcons = {
+  'Real Estate': HiOutlineHome,
+  'Hospitality': MdOutlineRestaurant,
+  'E-Commerce': HiOutlineShoppingCart,
+  'Web Development': HiOutlineCode,
+  'WordPress': HiOutlineDesktopComputer,
+}
+
+const getFavicon = (url) => {
+  try {
+    return `https://${new URL(url).hostname}/favicon.ico`
+  } catch {
+    return null
+  }
+}
+
+const getAccentColor = (gradient) => gradient.match(/#[0-9a-fA-F]{6}/)?.[0] || '#1e293b'
 
 const projects = [
   {
@@ -11,10 +28,9 @@ const projects = [
     name: 'GuestFlow Pro',
     tagline: 'Hotel Concierge Platform',
     description: 'Digital concierge platform connecting Italian hospitality expertise with UK guests.',
-    tech: ['WordPress'],
-    category: 'WordPress',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    category: 'Hospitality',
     live: 'https://guestflowpro.com/hotels',
-    image: BASE + 'images/Projects/new-projects/guest.png',
     fallback: 'linear-gradient(135deg, #1e40af, #0ea5e9)',
   },
   {
@@ -22,10 +38,9 @@ const projects = [
     name: 'Amica Connect',
     tagline: 'Healthcare Staffing Platform',
     description: 'Hire fully compliant healthcare staff — faster, safer, without recruitment agencies.',
-    tech: ['WordPress'],
-    category: 'WordPress',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    category: 'Web Development',
     live: 'https://www.amicaconnect.com/',
-    image: BASE + 'images/Projects/new-projects/amica.png',
     fallback: 'linear-gradient(135deg, #7c3aed, #a78bfa)',
   },
   {
@@ -36,29 +51,16 @@ const projects = [
     tech: ['WordPress', 'WooCommerce'],
     category: 'E-Commerce',
     live: 'https://mairatextile.com/',
-    image: BASE + 'images/Projects/new-projects/mairatextile.png',
     fallback: 'linear-gradient(135deg, #be185d, #f472b6)',
-  },
-  {
-    id: 4,
-    name: 'Selections.pk',
-    tagline: 'Fashion & Fragrance Store',
-    description: 'Luxury e-commerce platform for premium fragrances and fashion products in Pakistan.',
-    tech: ['WordPress', 'WooCommerce'],
-    category: 'E-Commerce',
-    live: 'https://selections.pk/',
-    image: BASE + 'images/Projects/new-projects/selectionpk.png',
-    fallback: 'linear-gradient(135deg, #b45309, #fbbf24)',
   },
   {
     id: 5,
     name: 'Selections Technologies',
     tagline: 'IT Services Company',
-    description: 'Pakistan-based IT services company offering web development and digital solutions.',
-    tech: ['WordPress'],
-    category: 'WordPress',
+    description: 'UK-based IT services company offering web development and digital solutions.',
+    tech: ['React', 'Tailwind CSS'],
+    category: 'Web Development',
     live: 'https://selectionstechnologies.com/',
-    image: BASE + 'images/Projects/new-projects/selectiontech.png',
     fallback: 'linear-gradient(135deg, #2563EB, #06B6D4)',
   },
   {
@@ -69,7 +71,6 @@ const projects = [
     tech: ['WordPress'],
     category: 'WordPress',
     live: 'https://ayeshaconsultancy.com/',
-    image: BASE + 'images/Projects/new-projects/ayesha.png',
     fallback: 'linear-gradient(135deg, #059669, #34d399)',
   },
   {
@@ -80,7 +81,6 @@ const projects = [
     tech: ['WordPress', 'WooCommerce'],
     category: 'E-Commerce',
     live: 'https://dehleze.com',
-    image: BASE + 'images/Projects/dehleze.png',
     fallback: 'linear-gradient(135deg, #dc2626, #f87171)',
   },
   {
@@ -91,7 +91,6 @@ const projects = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     category: 'Web Development',
     live: 'https://alirazadeveloper75.github.io/ecomsy.official/',
-    image: BASE + 'images/Projects/ecomsy.png',
     fallback: 'linear-gradient(135deg, #0f172a, #334155)',
   },
   {
@@ -102,7 +101,6 @@ const projects = [
     tech: ['HTML', 'Bootstrap'],
     category: 'Web Development',
     live: 'https://alirazadeveloper75.github.io/Cardiff-Transfers/index.html',
-    image: BASE + 'images/Projects/cardiff.png',
     fallback: 'linear-gradient(135deg, #1d4ed8, #3b82f6)',
   },
   {
@@ -113,7 +111,6 @@ const projects = [
     tech: ['WordPress'],
     category: 'WordPress',
     live: 'https://unclaimd.co.uk/',
-    image: BASE + 'images/Projects/unclaimed.png',
     fallback: 'linear-gradient(135deg, #374151, #6b7280)',
   },
   {
@@ -124,19 +121,7 @@ const projects = [
     tech: ['WordPress'],
     category: 'WordPress',
     live: 'https://drrashidsiraj.com/',
-    image: BASE + 'images/Projects/siraj.png',
     fallback: 'linear-gradient(135deg, #0284c7, #38bdf8)',
-  },
-  {
-    id: 12,
-    name: 'Razastore.pk',
-    tagline: 'Multi-Category E-Commerce',
-    description: 'E-commerce platform for fashion, electronics, home essentials, and beauty across Pakistan.',
-    tech: ['WordPress', 'WooCommerce'],
-    category: 'E-Commerce',
-    live: 'https://razastorepk.com/',
-    image: BASE + 'images/Projects/raza.png',
-    fallback: 'linear-gradient(135deg, #7c3aed, #c084fc)',
   },
   {
     id: 13,
@@ -144,9 +129,8 @@ const projects = [
     tagline: 'Real Estate Pakistan',
     description: 'Real estate platform with residential, commercial, and industrial property listings.',
     tech: ['WordPress'],
-    category: 'WordPress',
+    category: 'Real Estate',
     live: 'https://malkeeyat.com/',
-    image: BASE + 'images/Projects/malk.png',
     fallback: 'linear-gradient(135deg, #065f46, #10b981)',
   },
   {
@@ -157,7 +141,6 @@ const projects = [
     tech: ['WordPress'],
     category: 'WordPress',
     live: 'https://isldofficial.com/',
-    image: BASE + 'images/Projects/isld.png',
     fallback: 'linear-gradient(135deg, #92400e, #f59e0b)',
   },
   {
@@ -168,7 +151,6 @@ const projects = [
     tech: ['WordPress'],
     category: 'WordPress',
     live: 'https://pinoycar.com/',
-    image: BASE + 'images/Projects/pinoy.png',
     fallback: 'linear-gradient(135deg, #1e3a8a, #2563EB)',
   },
   {
@@ -179,7 +161,6 @@ const projects = [
     tech: ['WordPress'],
     category: 'WordPress',
     live: 'https://ieltslahore.com/',
-    image: BASE + 'images/Projects/ielts.png',
     fallback: 'linear-gradient(135deg, #0e7490, #06B6D4)',
   },
   {
@@ -190,7 +171,6 @@ const projects = [
     tech: ['WordPress'],
     category: 'WordPress',
     live: 'https://websol.tech/',
-    image: BASE + 'images/Projects/websol.png',
     fallback: 'linear-gradient(135deg, #6d28d9, #8b5cf6)',
   },
   {
@@ -201,8 +181,267 @@ const projects = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     category: 'Web Development',
     live: 'https://alirazadeveloper75.github.io/calculation-tools/',
-    image: BASE + 'images/Projects/tools.png',
     fallback: 'linear-gradient(135deg, #166534, #22c55e)',
+  },
+  {
+    id: 19,
+    name: 'Gazebo Restaurant',
+    tagline: 'Indian Fine Dining Chain',
+    description: 'Multi-location Indian fine dining restaurant across the UAE with online table reservations.',
+    tech: ['WordPress'],
+    category: 'Hospitality',
+    live: 'https://www.gazebo.ae/',
+    fallback: 'linear-gradient(135deg, #b91c1c, #f59e0b)',
+  },
+  {
+    id: 20,
+    name: 'Dodo Pizza Dubai',
+    tagline: 'Pizza Delivery & Ordering',
+    description: 'Round-the-clock pizza delivery platform for Dubai with online ordering and app integration.',
+    tech: ['WordPress', 'WooCommerce'],
+    category: 'E-Commerce',
+    live: 'https://dodopizza.ae/dubai',
+    fallback: 'linear-gradient(135deg, #ea580c, #facc15)',
+  },
+  {
+    id: 21,
+    name: 'House of Kabila',
+    tagline: 'Mughlai Restaurant Chain',
+    description: 'Indian Mughlai restaurant with two Dubai locations offering royal cuisine for dine-in and delivery.',
+    tech: ['WordPress'],
+    category: 'Hospitality',
+    live: 'https://houseofkabila.com/',
+    fallback: 'linear-gradient(135deg, #7c2d12, #eab308)',
+  },
+  {
+    id: 22,
+    name: 'The Maine Group',
+    tagline: 'Hospitality Group Website',
+    description: 'Corporate site for a multi-venue hospitality group spanning Dubai, London, and Ibiza.',
+    tech: ['WordPress'],
+    category: 'Hospitality',
+    live: 'https://themainegroup.com/',
+    fallback: 'linear-gradient(135deg, #0f172a, #38bdf8)',
+  },
+  {
+    id: 23,
+    name: 'Roka Restaurant',
+    tagline: 'Restaurant & Reservations',
+    description: 'Restaurant website with menu showcase and online reservation booking.',
+    tech: ['WordPress'],
+    category: 'Hospitality',
+    live: 'https://www.rokarestaurant.com/en',
+    fallback: 'linear-gradient(135deg, #111827, #f43f5e)',
+  },
+  {
+    id: 24,
+    name: 'Soul Kitchen DXB',
+    tagline: 'Restaurant & Live Music Venue',
+    description: 'Dubai dining venue blending Lebanese and Latin American cuisine with live music events.',
+    tech: ['WordPress'],
+    category: 'Hospitality',
+    live: 'https://soulkitchendxb.com/',
+    fallback: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+  },
+  {
+    id: 25,
+    name: "Harat's",
+    tagline: 'Irish Pub Chain',
+    description: 'Website for a global Irish pub chain location in Dubai featuring events, music, and dining.',
+    tech: ['WordPress'],
+    category: 'Hospitality',
+    live: 'https://harats.ae/',
+    fallback: 'linear-gradient(135deg, #166534, #4ade80)',
+  },
+  {
+    id: 26,
+    name: 'The Property Agent',
+    tagline: 'Estate Agency UK',
+    description: 'London estate agency site for property sales, lettings, and rentals in Finchley and Totteridge.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://propertyagent.co.uk/',
+    fallback: 'linear-gradient(135deg, #1e3a8a, #60a5fa)',
+  },
+  {
+    id: 27,
+    name: 'Metropolitan Wharf',
+    tagline: 'Property & Studio Spaces',
+    description: 'Website for the Metropolitan Wharf property in London showcasing available units and spaces.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://www.metropolitanwharf.com/',
+    fallback: 'linear-gradient(135deg, #334155, #94a3b8)',
+  },
+  {
+    id: 28,
+    name: 'MyUKPA',
+    tagline: 'UK Property Management',
+    description: 'Property management platform offering guaranteed rent and landlord services across the UK.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://www.myukpa.com/',
+    fallback: 'linear-gradient(135deg, #0369a1, #38bdf8)',
+  },
+  {
+    id: 29,
+    name: 'Real Estates WSP',
+    tagline: 'North London Estate Agency',
+    description: 'Independent estate agency site for residential sales, lettings, and new developments in North London.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://www.realestates-wsp.co.uk/',
+    fallback: 'linear-gradient(135deg, #78350f, #d97706)',
+  },
+  {
+    id: 30,
+    name: 'Unique Property Company',
+    tagline: 'London Lettings & Sales',
+    description: 'London estate and lettings agency website specialising in distinctive, one-of-a-kind properties.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://uniquepropertycompany.co.uk/',
+    fallback: 'linear-gradient(135deg, #4c1d95, #a78bfa)',
+  },
+  {
+    id: 31,
+    name: 'Lodhi Real Estate',
+    tagline: 'Real Estate Company',
+    description: 'Corporate website for a real estate company showcasing property listings and services.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://lodhirealestate.com/',
+    fallback: 'linear-gradient(135deg, #0e7490, #67e8f9)',
+  },
+  {
+    id: 32,
+    name: 'Zalmi Marketing',
+    tagline: 'Marketing Agency',
+    description: 'Marketing agency website showcasing branding and digital marketing services.',
+    tech: ['WordPress'],
+    category: 'WordPress',
+    live: 'https://www.thezalmimarketing.com/',
+    fallback: 'linear-gradient(135deg, #b45309, #fde047)',
+  },
+  {
+    id: 33,
+    name: 'Ellahi Associates',
+    tagline: 'Real Estate Consultancy',
+    description: 'Real estate consultancy marketing premium residential and commercial developments in Lahore.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://ellahiassociates.com/',
+    fallback: 'linear-gradient(135deg, #134e4a, #2dd4bf)',
+  },
+  {
+    id: 34,
+    name: 'Anaya Star Properties',
+    tagline: 'Real Estate Agency UAE',
+    description: 'Dubai real estate agency offering residential and commercial property sales, rentals, and off-plan investments across the UAE.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://anayastarproperties.com/',
+    fallback: 'linear-gradient(135deg, #92400e, #fbbf24)',
+  },
+  {
+    id: 35,
+    name: 'District Real Estate',
+    tagline: 'Property Advisory Dubai & Abu Dhabi',
+    description: 'UAE property advisory firm offering buying, renting, and off-plan investment services across Dubai and Abu Dhabi.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://www.districtuae.com/',
+    fallback: 'linear-gradient(135deg, #0c4a6e, #38bdf8)',
+  },
+  {
+    id: 36,
+    name: "Christie's Real Estate Dubai",
+    tagline: 'Luxury Real Estate Dubai',
+    description: 'Luxury real estate agency offering high-end residential sales, rentals, and off-plan investments across Dubai, Abu Dhabi, and Ras Al Khaimah.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://www.christiesrealestatedubai.com/',
+    fallback: 'linear-gradient(135deg, #451a03, #d4af37)',
+  },
+  {
+    id: 37,
+    name: 'Kharz',
+    tagline: 'Dubai Property Advisory',
+    description: 'Dubai-based real estate advisory helping buyers and investors purchase apartments, villas, and commercial properties through verified listings.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://dubai.kharz.ae/',
+    fallback: 'linear-gradient(135deg, #164e63, #22d3ee)',
+  },
+  {
+    id: 38,
+    name: 'White & Co Real Estate',
+    tagline: 'Real Estate Brokerage Dubai',
+    description: 'Dubai real estate brokerage specializing in residential and commercial property sales, rentals, and off-plan developments.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://whiteandcogroup.com/',
+    fallback: 'linear-gradient(135deg, #1f2937, #9ca3af)',
+  },
+  {
+    id: 39,
+    name: 'Coldwell Banker UAE',
+    tagline: 'Real Estate Agency UAE',
+    description: 'UAE real estate agency facilitating property sales, rentals, and purchases across Dubai and other emirates.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://www.coldwellbanker.ae/',
+    fallback: 'linear-gradient(135deg, #7f1d1d, #fca5a5)',
+  },
+  {
+    id: 40,
+    name: 'Dubai International Real Estate',
+    tagline: 'Luxury Property Dubai',
+    description: 'Real estate firm specializing in upscale luxury properties in Ras Al Khaimah and the wider UAE market.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://dubaiire.ae/',
+    fallback: 'linear-gradient(135deg, #581c87, #c084fc)',
+  },
+  {
+    id: 41,
+    name: 'Impressive Real Estate',
+    tagline: 'Property Consultancy Dubai',
+    description: 'Dubai property consultancy offering buying, selling, and rental services across prime communities like Dubai Marina and Downtown Dubai.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://impressiverealestate.net/',
+    fallback: 'linear-gradient(135deg, #0f766e, #5eead4)',
+  },
+  {
+    id: 42,
+    name: 'Next Level Real Estate',
+    tagline: 'Real Estate Agency Dubai',
+    description: 'Award-winning Dubai real estate agency offering property buying, selling, leasing, and investment consulting services.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://www.nextlevelrealestate.ae/',
+    fallback: 'linear-gradient(135deg, #1e3a8a, #93c5fd)',
+  },
+  {
+    id: 43,
+    name: 'Homeland Realty',
+    tagline: 'Real Estate Brokerage Dubai',
+    description: 'Dubai real estate firm offering end-to-end property buying, selling, and off-plan investment services across the UAE.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://www.homeland.ae/',
+    fallback: 'linear-gradient(135deg, #365314, #a3e635)',
+  },
+  {
+    id: 44,
+    name: 'Provident Estate',
+    tagline: 'Leading Real Estate Agency Dubai',
+    description: 'Dubai real estate agency offering property sales, rentals, off-plan investments, mortgages, and property management.',
+    tech: ['WordPress'],
+    category: 'Real Estate',
+    live: 'https://providentestate.com/',
+    fallback: 'linear-gradient(135deg, #7c2d12, #fb923c)',
   },
 ]
 
@@ -213,14 +452,16 @@ const techColors = {
   CSS:          'bg-sky-50 text-sky-600 border border-sky-100',
   JavaScript:   'bg-yellow-50 text-yellow-700 border border-yellow-100',
   Bootstrap:    'bg-purple-50 text-purple-600 border border-purple-100',
+  React:        'bg-cyan-50 text-cyan-600 border border-cyan-100',
+  'Tailwind CSS': 'bg-teal-50 text-teal-600 border border-teal-100',
 }
 
-const filters = ['All', 'WordPress', 'E-Commerce', 'Web Development']
+const filters = ['All', 'Real Estate', 'Hospitality', 'E-Commerce', 'WordPress']
 
 const stats = [
-  { value: '18+', label: 'Projects Delivered' },
+  { value: '42+', label: 'Projects Delivered' },
   { value: '10+', label: 'Industries Served' },
-  { value: '5+', label: 'Countries' },
+  { value: '6+', label: 'Countries' },
   { value: '100%', label: 'Client Satisfaction' },
 ]
 
@@ -243,13 +484,13 @@ const portfolioLd = {
   '@id': 'https://selectionstechnologies.com/portfolio#webpage',
   url: 'https://selectionstechnologies.com/portfolio',
   name: 'Our Portfolio — Selections Technologies',
-  description: 'Explore our portfolio of 18+ web development, WordPress, e-commerce, and software projects delivered across Pakistan and worldwide.',
+  description: 'Explore our portfolio of 42+ web development, WordPress, e-commerce, and software projects delivered across the UK and worldwide.',
   isPartOf: { '@id': 'https://selectionstechnologies.com/#website' },
 }
 
 export default function Portfolio() {
   const [active, setActive] = useState('All')
-  const [imgErrors, setImgErrors] = useState({})
+  const [faviconErrors, setFaviconErrors] = useState({})
 
   const filtered = active === 'All' ? projects : projects.filter((p) => p.category === active)
 
@@ -257,8 +498,8 @@ export default function Portfolio() {
     <>
       <SEO
         title="Our Portfolio | Web Development Projects — Selections Technologies"
-        description="Explore 18+ real-world projects by Selections Technologies — WordPress websites, WooCommerce stores, custom web development for clients across Pakistan, UK, Philippines and worldwide."
-        keywords="web development portfolio Pakistan, WordPress projects Lahore, WooCommerce store development, IT company portfolio, website development examples, Shopify developer portfolio, digital agency work Pakistan, Selections Technologies projects, web design portfolio Lahore"
+        description="Explore 42+ real-world projects by Selections Technologies — WordPress websites, WooCommerce stores, custom web development for clients across the UK, UAE, Philippines and worldwide."
+        keywords="web development portfolio UK, WordPress projects, WooCommerce store development, IT company portfolio, website development examples, Shopify developer portfolio, digital agency work UK, Selections Technologies projects, web design portfolio UK"
         canonical="/portfolio"
         ogType="website"
       />
@@ -288,7 +529,7 @@ export default function Portfolio() {
               variants={fadeUp}
               className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed"
             >
-              Real-world projects delivered across Pakistan and worldwide — from WordPress sites and WooCommerce stores to custom web solutions.
+              Real-world projects delivered across the UK and worldwide — from WordPress sites and WooCommerce stores to custom web solutions.
             </motion.p>
           </motion.div>
         </div>
@@ -360,32 +601,59 @@ export default function Portfolio() {
                   className="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    {imgErrors[project.id] ? (
-                      <div
-                        className="w-full h-full flex items-center justify-center"
-                        style={{ background: project.fallback }}
-                      >
-                        <span className="text-white/80 text-sm font-semibold px-4 text-center">{project.name}</span>
-                      </div>
-                    ) : (
-                      <img
-                        src={project.image}
-                        alt={project.name}
-                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                        onError={() => setImgErrors((prev) => ({ ...prev, [project.id]: true }))}
-                        loading="lazy"
-                      />
-                    )}
+                  <div
+                    className="relative h-48 overflow-hidden flex items-center justify-center"
+                    style={{ background: project.fallback }}
+                  >
+                    {/* Dot texture overlay */}
+                    <div
+                      className="absolute inset-0 opacity-[0.15]"
+                      style={{
+                        backgroundImage: 'radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)',
+                        backgroundSize: '18px 18px',
+                      }}
+                    />
+                    {/* Large watermark icon */}
+                    {(() => {
+                      const Icon = categoryIcons[project.category] ?? HiOutlineDesktopComputer
+                      return (
+                        <Icon
+                          className="absolute -right-6 -bottom-6 text-white/10 group-hover:scale-110 transition-transform duration-500"
+                          size={150}
+                        />
+                      )
+                    })()}
+                    {/* Company name */}
+                    <span className="relative z-[1] text-white text-lg font-extrabold px-6 text-center drop-shadow-md group-hover:opacity-0 transition-opacity duration-300">
+                      {project.name}
+                    </span>
+                    {/* Favicon badge */}
+                    <div className="absolute top-3 left-3 z-10 w-9 h-9 rounded-lg bg-white shadow-md flex items-center justify-center overflow-hidden">
+                      {faviconErrors[project.id] ? (
+                        <span
+                          className="text-sm font-extrabold"
+                          style={{ color: getAccentColor(project.fallback) }}
+                        >
+                          {project.name.charAt(0)}
+                        </span>
+                      ) : (
+                        <img
+                          src={getFavicon(project.live)}
+                          alt=""
+                          className="w-6 h-6 object-contain"
+                          onError={() => setFaviconErrors((prev) => ({ ...prev, [project.id]: true }))}
+                        />
+                      )}
+                    </div>
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-navy/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 z-20 bg-navy/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto">
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-5 py-2.5 bg-white text-navy text-sm font-bold rounded-xl hover:bg-brand-blue hover:text-white transition-colors"
                       >
-                        View Live Site <HiExternalLink size={15} />
+                        Preview Site <HiExternalLink size={15} />
                       </a>
                     </div>
                   </div>

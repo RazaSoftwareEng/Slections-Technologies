@@ -8,8 +8,8 @@ import logo from '../assests/logo.png'
 const socials = [
   { icon: FaFacebookF, href: 'https://www.facebook.com/selections.technologies', label: 'Facebook' },
   { icon: FaInstagram, href: 'https://www.instagram.com/selections.technologies/?hl=en', label: 'Instagram' },
-  { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/selections-technologies-792b62426/?skipRedirect=true', label: 'LinkedIn' },
-  { icon: FaWhatsapp, href: 'https://wa.me/923003209005', label: 'WhatsApp' },
+  { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/selections-technologies/', label: 'LinkedIn' },
+  { icon: FaWhatsapp, href: 'https://wa.me/447448091908', label: 'WhatsApp' },
 ]
 
 const navLinks = [
@@ -50,9 +50,9 @@ export default function Navbar() {
                   <HiOutlineMail size={17} />
                   selectionstechnologies@gmail.com
                 </a>
-                <a href="tel:+923003209005" className="flex items-center gap-2 text-sm font-medium hover:text-brand-cyan transition-colors">
+                <a href="tel:+447448091908" className="flex items-center gap-2 text-sm font-medium hover:text-brand-cyan transition-colors">
                   <HiOutlinePhone size={17} />
-                  +92 300 3209005
+                  +44 7448 091908
                 </a>
               </div>
               <div className="flex items-center gap-4">
@@ -84,7 +84,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Selections Technologies — Web Development Pakistan" className="h-12 w-auto object-contain" width="200" height="48" fetchPriority="high" />
+          <img src={logo} alt="Selections Technologies — Web Development UK" className="h-12 w-auto object-contain" width="200" height="48" fetchPriority="high" />
         </Link>
 
         {/* Desktop Nav */}

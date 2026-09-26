@@ -32,21 +32,13 @@ const structuredData = {
       },
       image: `${BASE}/og-image.png`,
       description:
-        'Selections Technologies is a Pakistan-based IT company offering web development, WordPress, Shopify, mobile app development, digital marketing, SEO, graphic design, AI chatbots, CRM, and custom software solutions.',
-      telephone: '+923003209005',
+        'Selections Technologies is a UK-based IT company offering web development, WordPress, Shopify, mobile app development, digital marketing, SEO, graphic design, AI chatbots, CRM, and custom software solutions.',
+      telephone: '+447448091908',
       email: 'selectionstechnologies@gmail.com',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '28 Davis Road',
-        addressLocality: 'Garhi Shahu',
-        addressRegion: 'Lahore',
-        postalCode: '54000',
-        addressCountry: 'PK',
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 31.5497,
-        longitude: 74.3436,
+        streetAddress: 'Croydon High Street',
+        addressCountry: 'GB',
       },
       openingHoursSpecification: [
         {
@@ -57,10 +49,9 @@ const structuredData = {
         },
       ],
       priceRange: '$$',
-      currenciesAccepted: 'PKR, USD, GBP',
-      paymentAccepted: 'Cash, Bank Transfer, JazzCash, EasyPaisa, PayPal',
+      currenciesAccepted: 'GBP, USD',
+      paymentAccepted: 'Cash, Bank Transfer, PayPal',
       areaServed: [
-        { '@type': 'Country', name: 'Pakistan' },
         { '@type': 'Country', name: 'United Kingdom' },
         { '@type': 'Country', name: 'United States' },
         { '@type': 'Country', name: 'United Arab Emirates' },
@@ -87,17 +78,17 @@ const structuredData = {
       },
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: '+923003209005',
+        telephone: '+447448091908',
         contactType: 'customer service',
-        availableLanguage: ['English', 'Urdu'],
+        availableLanguage: ['English'],
         areaServed: 'Worldwide',
         contactOption: 'HearingImpairedSupported',
       },
       sameAs: [
         'https://www.facebook.com/selections.technologies',
         'https://www.instagram.com/selections.technologies/?hl=en',
-        'https://www.linkedin.com/in/selections-technologies-792b62426/?skipRedirect=true',
-        `https://wa.me/923003209005`,
+        'https://www.linkedin.com/in/selections-technologies/',
+        `https://wa.me/447448091908`,
       ],
       founder: {
         '@type': 'Person',
@@ -111,14 +102,14 @@ const structuredData = {
         minValue: 5,
         maxValue: 20,
       },
-      keywords: 'web development, WordPress, Shopify, mobile app, digital marketing, SEO, graphic design, IT company Pakistan, Lahore',
+      keywords: 'web development, WordPress, Shopify, mobile app, digital marketing, SEO, graphic design, IT company UK, Croydon',
     },
     {
       '@type': 'WebSite',
       '@id': `${BASE}/#website`,
       url: BASE,
       name: 'Selections Technologies',
-      description: "Pakistan's trusted IT company for web development and digital solutions",
+      description: "UK's trusted IT company for web development and digital solutions",
       inLanguage: 'en-US',
       publisher: { '@id': `${BASE}/#organization` },
       potentialAction: {

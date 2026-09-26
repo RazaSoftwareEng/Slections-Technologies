@@ -25,8 +25,8 @@ const services = [
 const socials = [
   { icon: FaFacebookF, href: 'https://www.facebook.com/selections.technologies', label: 'Facebook' },
   { icon: FaInstagram, href: 'https://www.instagram.com/selections.technologies/?hl=en', label: 'Instagram' },
-  { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/selections-technologies-792b62426/?skipRedirect=true', label: 'LinkedIn' },
-  { icon: FaWhatsapp, href: 'https://wa.me/923003209005', label: 'WhatsApp' },
+  { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/selections-technologies/', label: 'LinkedIn' },
+  { icon: FaWhatsapp, href: 'https://wa.me/447448091908', label: 'WhatsApp' },
 ]
 
 export default function Footer() {
@@ -39,7 +39,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="inline-block mb-4">
               <div className="bg-white rounded-xl px-4 py-2 inline-block shadow-sm">
-                <img src={logo} alt="Selections Technologies — IT Company Lahore Pakistan" className="h-10 w-auto object-contain" width="180" height="40" loading="lazy" />
+                <img src={logo} alt="Selections Technologies — IT Company Croydon UK" className="h-10 w-auto object-contain" width="180" height="40" loading="lazy" />
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-slate-400 mb-6">
@@ -109,13 +109,13 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MdPhone className="text-brand-cyan mt-0.5 shrink-0" size={16} />
-                <a href="tel:+923003209005" className="hover:text-brand-cyan transition-colors">
-                  0300 3209005
+                <a href="tel:+447448091908" className="hover:text-brand-cyan transition-colors">
+                  +44 7448 091908
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MdLocationOn className="text-brand-cyan mt-0.5 shrink-0" size={16} />
-                <span>28 Davis Road, Garhi Shahu, Lahore, 54000</span>
+                <span>Croydon High Street, UK</span>
               </li>
             </ul>
           </div>
@@ -127,7 +127,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Selections Technologies. All rights reserved.
           </p>
           <p className="text-sm text-slate-500">
-            28 Davis Road, Garhi Shahu, Lahore, 54000 &nbsp;·&nbsp;
+            Croydon High Street, UK &nbsp;·&nbsp;
             <span className="text-brand-cyan">selectionstechnologies@gmail.com</span>
           </p>
         </div>

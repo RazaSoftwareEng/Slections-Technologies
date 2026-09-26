@@ -24,7 +24,7 @@ const homeLd = {
   '@type': 'WebPage',
   '@id': `${BASE}/#webpage`,
   url: `${BASE}/`,
-  name: 'Selections Technologies | Web Development & IT Solutions Pakistan',
+  name: 'Selections Technologies | Web Development & IT Solutions UK',
   description: 'Selections Technologies provides innovative web development, software solutions, and digital transformation services to help businesses grow and succeed.',
   isPartOf: { '@id': `${BASE}/#website` },
   about: { '@id': `${BASE}/#organization` },
@@ -36,10 +36,10 @@ const faqLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'How much does a website cost in Pakistan?',
+      name: 'How much does a website cost in the UK?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'At Selections Technologies, a basic business website starts from PKR 25,000. WordPress sites range from PKR 40,000–150,000. E-commerce stores start from PKR 80,000. Custom web apps from PKR 200,000. Contact us for a free custom quote tailored to your needs.',
+        text: 'At Selections Technologies, a basic business website starts from £250. WordPress sites range from £400–£1,500. E-commerce stores start from £800. Custom web apps from £2,000. Contact us for a free custom quote tailored to your needs.',
       },
     },
     {
@@ -71,7 +71,7 @@ const faqLd = {
       name: 'Do you work with international clients?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes! Selections Technologies works with clients worldwide including UK, USA, UAE, Philippines, and more. We communicate in English and Urdu and accept international payments via PayPal, bank transfer, and more.',
+        text: 'Yes! Selections Technologies works with clients worldwide including the UK, USA, UAE, and more. We communicate in English and accept international payments via PayPal, bank transfer, and more.',
       },
     },
     {
@@ -79,7 +79,7 @@ const faqLd = {
       name: 'Where is Selections Technologies located?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We are based at 28 Davis Road, Garhi Shahu, Lahore 54000, Pakistan. You can also reach us on WhatsApp at +92 300 3209005 or email selectionstechnologies@gmail.com.',
+        text: 'We are based at Croydon High Street, UK. You can also reach us on WhatsApp at +44 7448 091908 or email selectionstechnologies@gmail.com.',
       },
     },
     {
@@ -92,10 +92,10 @@ const faqLd = {
     },
     {
       '@type': 'Question',
-      name: 'Do you provide SEO services in Pakistan?',
+      name: 'Do you provide SEO services in the UK?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes, we provide complete SEO services including keyword research, on-page SEO, technical SEO, link building, local SEO for Pakistan, and Google ranking reports.',
+        text: 'Yes, we provide complete SEO services including keyword research, on-page SEO, technical SEO, link building, local SEO for the UK, and Google ranking reports.',
       },
     },
   ],
@@ -278,9 +278,9 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Web Development & IT Solutions Pakistan"
-        description="Selections Technologies — Pakistan's #1 IT company for web development, WordPress, Shopify, mobile apps, digital marketing, graphic design, SEO & custom software. Affordable. Professional. Trusted."
-        keywords="Selections Technologies, Selection Technologies, Selections Tech, Selection Tech, web developer Pakistan, web developer, web development company, website design Pakistan, software house Pakistan, IT company Pakistan, mobile app development, digital marketing Pakistan, graphic design Pakistan, Shopify developer Pakistan, WordPress developer Pakistan, ecommerce website Pakistan, SEO services Pakistan, social media marketing, logo design, UI UX design, IT consulting, digital transformation, React developer Pakistan, best IT company Pakistan, affordable web development, custom software development, tech company Pakistan, startup website, business website Pakistan"
+        title="Web Development & IT Solutions UK"
+        description="Selections Technologies — the UK's #1 IT company for web development, WordPress, Shopify, mobile apps, digital marketing, graphic design, SEO & custom software. Affordable. Professional. Trusted."
+        keywords="Selections Technologies, Selection Technologies, Selections Tech, Selection Tech, web developer UK, web developer, web development company, website design UK, software house UK, IT company UK, mobile app development, digital marketing UK, graphic design UK, Shopify developer UK, WordPress developer UK, ecommerce website UK, SEO services UK, social media marketing, logo design, UI UX design, IT consulting, digital transformation, React developer UK, best IT company UK, affordable web development, custom software development, tech company UK, startup website, business website UK"
         canonical="/"
         ogType="website"
       />
@@ -598,7 +598,7 @@ export default function Home() {
 
               <motion.a
                 variants={fadeUp}
-                href="https://wa.me/923003209005"
+                href="https://wa.me/447448091908"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 bg-green-500 hover:bg-green-400 text-white text-sm font-semibold rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-green-500/30"
@@ -663,7 +663,7 @@ export default function Home() {
                             value={form.phone}
                             onChange={handleChange}
                             required
-                            placeholder="+92 XXX XXXXXXX"
+                            placeholder="+44 XXXX XXXXXX"
                             className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-navy placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue focus:bg-white transition-all"
                           />
                         </div>

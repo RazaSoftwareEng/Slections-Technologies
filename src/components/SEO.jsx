@@ -15,7 +15,7 @@ export default function SEO({
 }) {
   const fullTitle = title
     ? `${title} | ${SITE_NAME}`
-    : `${SITE_NAME} | Web Development & IT Solutions Pakistan`
+    : `${SITE_NAME} | Web Development & IT Solutions UK`
 
   const url = canonical ? `${BASE_URL}${canonical}` : BASE_URL
 
@@ -36,9 +36,9 @@ export default function SEO({
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={`${SITE_NAME} - IT Solutions Pakistan`} />
+      <meta property="og:image:alt" content={`${SITE_NAME} - IT Solutions UK`} />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content="en_GB" />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -47,10 +47,10 @@ export default function SEO({
       <meta name="twitter:image" content={ogImage} />
 
       {/* Local / Geo */}
-      <meta name="geo.region" content="PK-PB" />
-      <meta name="geo.placename" content="Lahore, Punjab, Pakistan" />
-      <meta name="geo.position" content="31.5497;74.3436" />
-      <meta name="ICBM" content="31.5497, 74.3436" />
+      <meta name="geo.region" content="GB-CRY" />
+      <meta name="geo.placename" content="Croydon, London, United Kingdom" />
+      <meta name="geo.position" content="51.3762;-0.0982" />
+      <meta name="ICBM" content="51.3762, -0.0982" />
 
       {/* Extra */}
       <meta name="author" content={SITE_NAME} />

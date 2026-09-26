@@ -71,9 +71,9 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Us | IT Company Pakistan — Our Mission, Vision & Values"
+        title="About Us | IT Company UK — Our Mission, Vision & Values"
         description="Selections Technologies is a dedicated IT company delivering high-quality software solutions, modern websites, and innovative digital services. Learn about our mission, vision, and core values."
-        keywords="about Selections Technologies, Selection Technologies company, Selections Tech, Selection Tech, IT company Pakistan, software house Pakistan, web development agency Pakistan, digital agency Pakistan, tech company Pakistan, professional web developers Pakistan, graphic design company Pakistan, Shopify experts Pakistan, WordPress experts Pakistan, digital marketing agency Pakistan, who is Selections Technologies, best software house Pakistan, top IT company Pakistan, technology solutions Pakistan, company mission vision values"
+        keywords="about Selections Technologies, Selection Technologies company, Selections Tech, Selection Tech, IT company UK, software house UK, web development agency UK, digital agency UK, tech company UK, professional web developers UK, graphic design company UK, Shopify experts UK, WordPress experts UK, digital marketing agency UK, who is Selections Technologies, best software house UK, top IT company UK, technology solutions UK, company mission vision values"
         canonical="/about"
         ogType="website"
       />

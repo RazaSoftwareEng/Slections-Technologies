@@ -30,15 +30,15 @@ const contactInfo = [
   {
     icon: MdPhone,
     label: 'Phone / WhatsApp',
-    value: '0300 3209005',
-    href: 'tel:+923003209005',
+    value: '+44 7448 091908',
+    href: 'tel:+447448091908',
     color: 'text-brand-cyan',
     bg: 'bg-brand-cyan/10',
   },
   {
     icon: MdLocationOn,
     label: 'Address',
-    value: '28 Davis Road, Garhi Shahu, Lahore, 54000',
+    value: 'Croydon High Street, UK',
     href: null,
     color: 'text-purple-400',
     bg: 'bg-purple-400/10',
@@ -116,8 +116,8 @@ export default function Contact() {
     <>
       <SEO
         title="Contact Us | Get a Free Quote — Selections Technologies"
-        description="Contact Selections Technologies for professional web development, software solutions, mobile apps, and IT consulting. Reach us via email, phone, or WhatsApp. Based in Pakistan, serving worldwide."
-        keywords="contact Selections Technologies, hire web developer Pakistan, web development quote Pakistan, software development inquiry, Shopify developer contact, WordPress developer hire, digital marketing contact, graphic designer hire Pakistan, mobile app development quote, IT consulting inquiry, WhatsApp IT support Pakistan, affordable web developer, get website made Pakistan, ecommerce store Pakistan, Selection Technologies contact, Selections Tech contact"
+        description="Contact Selections Technologies for professional web development, software solutions, mobile apps, and IT consulting. Reach us via email, phone, or WhatsApp. Based in the UK, serving worldwide."
+        keywords="contact Selections Technologies, hire web developer UK, web development quote UK, software development inquiry, Shopify developer contact, WordPress developer hire, digital marketing contact, graphic designer hire UK, mobile app development quote, IT consulting inquiry, WhatsApp IT support UK, affordable web developer, get website made UK, ecommerce store UK, Selection Technologies contact, Selections Tech contact"
         canonical="/contact"
         ogType="website"
       />
@@ -204,7 +204,7 @@ export default function Contact() {
               >
                 <iframe
                   title="Selections Technologies Location"
-                  src="https://maps.google.com/maps?q=28+Davis+Road,+Garhi+Shahu,+Lahore,+54000,+Pakistan&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=Croydon+High+Street,+Croydon,+UK&t=&z=14&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -302,7 +302,7 @@ export default function Contact() {
                           name="phone"
                           value={form.phone}
                           onChange={handleChange}
-                          placeholder="+92 XXX XXXXXXX"
+                          placeholder="+44 XXXX XXXXXX"
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-navy placeholder:text-slate-400 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue transition-all"
                         />
                       </div>

@@ -399,7 +399,7 @@ export default function Courses() {
       <SEO
         title="Online IT Courses | Web Dev, Shopify, SEO, Digital Marketing & More"
         description="Learn in-demand IT skills online with Selections Technologies. Courses in Shopify, WordPress, Web Development with AI, Digital Marketing, SEO, Graphic Design, Meta & Google Ads. Worldwide enrollment. Affordable prices."
-        keywords="online IT courses Pakistan, web development course, Shopify course, WordPress course, digital marketing course, SEO course, graphic designing course, Meta ads course, Google ads course, full stack development course, social media marketing course, ecommerce course, AI development course, online learning Pakistan, IT training worldwide"
+        keywords="online IT courses UK, web development course, Shopify course, WordPress course, digital marketing course, SEO course, graphic designing course, Meta ads course, Google ads course, full stack development course, social media marketing course, ecommerce course, AI development course, online learning UK, IT training worldwide"
         canonical="/courses"
       />
 
@@ -588,7 +588,7 @@ export default function Courses() {
                 Enroll Now <HiArrowRight />
               </Link>
               <a
-                href="https://wa.me/923003209005"
+                href="https://wa.me/447448091908"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/60 text-white font-semibold rounded-xl hover:bg-white/10 transition-all hover:-translate-y-0.5"

@@ -191,7 +191,7 @@ export default function BlogPost() {
                 <div>
                   <p className="font-bold text-navy text-sm">Selections Technologies</p>
                   <p className="text-slate-500 text-xs mt-1 leading-relaxed">
-                    IT company based in Lahore, Pakistan. We build websites, apps, and digital marketing strategies for businesses across Pakistan and worldwide.
+                    IT company based in Croydon, UK. We build websites, apps, and digital marketing strategies for businesses across the UK and worldwide.
                   </p>
                 </div>
               </div>
@@ -236,7 +236,7 @@ export default function BlogPost() {
                   Get Free Quote
                 </Link>
                 <a
-                  href="https://wa.me/923003209005"
+                  href="https://wa.me/447448091908"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 py-2.5 bg-green-500 hover:bg-green-400 text-white text-xs font-bold rounded-xl transition-colors"

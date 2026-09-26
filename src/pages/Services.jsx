@@ -184,7 +184,7 @@ export default function Services() {
       <SEO
         title="Our Services | Web Dev, Shopify, WordPress, SEO, Digital Marketing & More"
         description="Selections Technologies offers web development, Shopify stores, WordPress websites, mobile apps, digital marketing, graphic design, logo design, SEO, social media marketing, AI chatbots, CRM, custom software and IT consulting. Get a free quote!"
-        keywords="web development services Pakistan, WordPress development, Shopify store development, ecommerce website, mobile app development Pakistan, AI chatbot development, CRM software, custom software development, digital marketing services, SEO services Pakistan, Meta ads Pakistan, Google ads Pakistan, graphic design services, logo design Pakistan, UI UX design, IT consulting, social media marketing, React development, best IT services Pakistan"
+        keywords="web development services UK, WordPress development, Shopify store development, ecommerce website, mobile app development UK, AI chatbot development, CRM software, custom software development, digital marketing services, SEO services UK, Meta ads UK, Google ads UK, graphic design services, logo design UK, UI UX design, IT consulting, social media marketing, React development, best IT services UK"
         canonical="/services"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesLd) }} />
