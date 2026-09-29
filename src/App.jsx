@@ -9,6 +9,7 @@ import Services from './pages/Services'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Courses from './pages/Courses'
+import Pricing from './pages/Pricing'
 import Portfolio from './pages/Portfolio'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
@@ -34,10 +35,12 @@ const structuredData = {
       description:
         'Selections Technologies is a UK-based IT company offering web development, WordPress, Shopify, mobile app development, digital marketing, SEO, graphic design, AI chatbots, CRM, and custom software solutions.',
       telephone: '+447448091908',
-      email: 'selectionstechnologies@gmail.com',
+      email: 'info@selectionstechnologies.com',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Croydon High Street',
+        addressLocality: 'Croydon',
+        addressRegion: 'London',
         addressCountry: 'GB',
       },
       openingHoursSpecification: [
@@ -140,6 +143,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/pricing" element={<Pricing />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/courses" element={<Courses />} />

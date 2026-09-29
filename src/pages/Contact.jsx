@@ -22,8 +22,8 @@ const contactInfo = [
   {
     icon: MdEmail,
     label: 'Email',
-    value: 'selectionstechnologies@gmail.com',
-    href: 'mailto:selectionstechnologies@gmail.com',
+    value: 'info@selectionstechnologies.com',
+    href: 'mailto:info@selectionstechnologies.com',
     color: 'text-brand-blue',
     bg: 'bg-brand-blue/10',
   },
@@ -38,7 +38,7 @@ const contactInfo = [
   {
     icon: MdLocationOn,
     label: 'Address',
-    value: 'Croydon High Street, UK',
+    value: 'Selections Technologies, Croydon High Street, UK',
     href: null,
     color: 'text-purple-400',
     bg: 'bg-purple-400/10',

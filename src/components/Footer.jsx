@@ -6,6 +6,7 @@ import logo from '../assests/logo.png'
 const quickLinks = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
+  { to: '/pricing', label: 'Pricing' },
   { to: '/portfolio', label: 'Portfolio' },
   { to: '/courses', label: 'Courses' },
   { to: '/blog', label: 'Blog' },
@@ -103,8 +104,8 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MdEmail className="text-brand-cyan mt-0.5 shrink-0" size={16} />
-                <a href="mailto:selectionstechnologies@gmail.com" className="hover:text-brand-cyan transition-colors break-all">
-                  selectionstechnologies@gmail.com
+                <a href="mailto:info@selectionstechnologies.com" className="hover:text-brand-cyan transition-colors break-all">
+                  info@selectionstechnologies.com
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-400">
@@ -115,7 +116,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MdLocationOn className="text-brand-cyan mt-0.5 shrink-0" size={16} />
-                <span>Croydon High Street, UK</span>
+                <span>Selections Technologies, Croydon High Street, UK</span>
               </li>
             </ul>
           </div>
@@ -128,7 +129,7 @@ export default function Footer() {
           </p>
           <p className="text-sm text-slate-500">
             Croydon High Street, UK &nbsp;·&nbsp;
-            <span className="text-brand-cyan">selectionstechnologies@gmail.com</span>
+            <span className="text-brand-cyan">info@selectionstechnologies.com</span>
           </p>
         </div>
       </div>

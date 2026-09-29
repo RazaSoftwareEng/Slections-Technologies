@@ -1,6 +1,7 @@
 ﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
+import CountUp from '../components/CountUp'
 import { HiExternalLink, HiOutlineHome, HiOutlineShoppingCart, HiOutlineCode, HiOutlineDesktopComputer } from 'react-icons/hi'
 import { MdOutlineRestaurant } from 'react-icons/md'
 
@@ -459,10 +460,10 @@ const techColors = {
 const filters = ['All', 'Real Estate', 'Hospitality', 'E-Commerce', 'WordPress']
 
 const stats = [
-  { value: '42+', label: 'Projects Delivered' },
-  { value: '10+', label: 'Industries Served' },
-  { value: '6+', label: 'Countries' },
-  { value: '100%', label: 'Client Satisfaction' },
+  { end: 100, suffix: '+', label: 'Projects Delivered' },
+  { end: 10, suffix: '+', label: 'Industries Served' },
+  { end: 6, suffix: '+', label: 'Countries' },
+  { end: 99.9, decimals: 1, suffix: '%', label: 'Client Satisfaction' },
 ]
 
 const fadeUp = {
@@ -542,9 +543,11 @@ export default function Portfolio() {
           className="relative max-w-4xl mx-auto px-4 mt-14"
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {stats.map(({ value, label }) => (
+            {stats.map(({ end, decimals, suffix, label }) => (
               <div key={label} className="text-center glass rounded-2xl py-4 px-2">
-                <p className="text-2xl sm:text-3xl font-extrabold text-gradient">{value}</p>
+                <p className="text-2xl sm:text-3xl font-extrabold text-gradient">
+                  <CountUp end={end} decimals={decimals} suffix={suffix} />
+                </p>
                 <p className="text-xs text-slate-400 mt-1 font-medium">{label}</p>
               </div>
             ))}

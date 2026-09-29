@@ -15,6 +15,7 @@ const socials = [
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
+  { to: '/pricing', label: 'Pricing' },
   { to: '/portfolio', label: 'Portfolio' },
   { to: '/courses', label: 'Courses' },
   { to: '/blog', label: 'Blog' },
@@ -46,9 +47,9 @@ export default function Navbar() {
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-11 flex items-center justify-between text-white">
               <div className="flex items-center gap-7">
-                <a href="mailto:selectionstechnologies@gmail.com" className="flex items-center gap-2 text-sm font-medium hover:text-brand-cyan transition-colors">
+                <a href="mailto:info@selectionstechnologies.com" className="flex items-center gap-2 text-sm font-medium hover:text-brand-cyan transition-colors">
                   <HiOutlineMail size={17} />
-                  selectionstechnologies@gmail.com
+                  info@selectionstechnologies.com
                 </a>
                 <a href="tel:+447448091908" className="flex items-center gap-2 text-sm font-medium hover:text-brand-cyan transition-colors">
                   <HiOutlinePhone size={17} />

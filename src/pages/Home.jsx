@@ -12,10 +12,15 @@ import {
   HiOutlineClock,
   HiOutlineCheckCircle,
   HiBadgeCheck,
+  HiOutlineGlobeAlt,
+  HiOutlineDeviceMobile,
+  HiOutlineSpeakerphone,
+  HiOutlineTrendingUp,
 } from 'react-icons/hi'
-import { FaStar, FaWhatsapp } from 'react-icons/fa'
+import { FaStar, FaWhatsapp, FaShopify, FaRobot } from 'react-icons/fa'
 import { MdSend } from 'react-icons/md'
 import SEO from '../components/SEO'
+import PricingPlans from '../components/PricingPlans'
 
 const BASE = 'https://selectionstechnologies.com'
 
@@ -79,7 +84,7 @@ const faqLd = {
       name: 'Where is Selections Technologies located?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We are based at Croydon High Street, UK. You can also reach us on WhatsApp at +44 7448 091908 or email selectionstechnologies@gmail.com.',
+        text: 'We are based at Croydon High Street, UK. You can also reach us on WhatsApp at +44 7448 091908 or email info@selectionstechnologies.com.',
       },
     },
     {
@@ -114,6 +119,15 @@ const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
 }
+
+const teaserServices = [
+  { icon: HiOutlineGlobeAlt, title: 'Web Development', desc: 'Fast, modern websites & web apps' },
+  { icon: FaShopify, title: 'Shopify & WordPress', desc: 'Stores and sites that convert' },
+  { icon: HiOutlineDeviceMobile, title: 'Mobile Apps', desc: 'iOS & Android with React Native' },
+  { icon: HiOutlineSpeakerphone, title: 'Digital Marketing', desc: 'Campaigns that drive growth' },
+  { icon: HiOutlineTrendingUp, title: 'SEO & Google Ads', desc: 'Rank higher, reach more buyers' },
+  { icon: FaRobot, title: 'AI Chatbot', desc: '24/7 automated support & leads' },
+]
 
 const whyCards = [
   {
@@ -504,51 +518,61 @@ export default function Home() {
       </section>
 
       {/* ─── Services Teaser ──────────────────────────────── */}
-      <section className="py-24 bg-surface relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-brand-blue via-blue-700 to-indigo-900 relative overflow-hidden">
+        <div className="absolute inset-0 hero-grid opacity-20" />
+        <Orb className="w-96 h-96 bg-brand-cyan -top-24 -right-24 opacity-30" />
+        <Orb className="w-80 h-80 bg-indigo-400 -bottom-24 -left-24 opacity-20" />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             variants={stagger}
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="grid lg:grid-cols-2 gap-12 items-center"
           >
             <motion.div variants={fadeUp}>
-              <span className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold tracking-widest uppercase mb-4">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-cyan-200 text-xs font-semibold tracking-widest uppercase mb-4">
                 Our Services
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-navy mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 leading-tight">
                 End-to-End Technology Solutions for{' '}
-                <span className="text-gradient">Modern Businesses</span>
+                <span className="text-cyan-300">Modern Businesses</span>
               </h2>
-              <p className="text-slate-500 text-base leading-relaxed mb-8">
+              <p className="text-blue-100 text-base leading-relaxed mb-8">
                 From concept to deployment, we deliver full-cycle digital solutions — beautifully designed,
                 rigorously tested, and built to scale.
               </p>
               <Link
                 to="/services"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-blue hover:bg-blue-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-blue/30 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-brand-blue hover:bg-cyan-50 font-semibold rounded-xl transition-all shadow-lg shadow-black/20 hover:-translate-y-0.5"
               >
                 Explore All Services <HiArrowRight />
               </Link>
             </motion.div>
 
             <motion.div variants={stagger} className="grid grid-cols-2 gap-4">
-              {['Web Development', 'Shopify & WordPress', 'Mobile Apps', 'Digital Marketing', 'SEO & Google Ads', 'AI Chatbot'].map((s, i) => (
-                <motion.div
-                  key={s}
-                  variants={fadeUp}
-                  custom={i}
-                  className="bg-white border border-slate-100 shadow-sm p-5 rounded-xl hover:border-brand-blue/30 hover:shadow-md transition-all"
-                >
-                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan mb-3" />
-                  <p className="text-navy text-sm font-semibold">{s}</p>
+              {teaserServices.map(({ icon: Icon, title, desc }, i) => (
+                <motion.div key={title} variants={fadeUp} custom={i}>
+                  <Link
+                    to="/services"
+                    className="group flex flex-col h-full p-5 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-sm hover:bg-white hover:border-white hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 transition-all duration-300"
+                  >
+                    <div className="w-11 h-11 mb-4 rounded-xl flex items-center justify-center text-xl bg-white/15 text-white group-hover:bg-gradient-to-br group-hover:from-brand-blue group-hover:to-brand-cyan transition-all duration-300">
+                      <Icon />
+                    </div>
+                    <p className="text-white group-hover:text-navy text-sm sm:text-base font-semibold mb-1 transition-colors">{title}</p>
+                    <p className="text-blue-100/80 group-hover:text-slate-500 text-xs leading-relaxed transition-colors hidden sm:block">{desc}</p>
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>
           </motion.div>
         </div>
       </section>
+
+      {/* ─── Pricing Plans ────────────────────────────────── */}
+      <PricingPlans />
 
       {/* ─── Quick Quote Form ─────────────────────────────── */}
       <section className="py-24 bg-navy relative overflow-hidden">

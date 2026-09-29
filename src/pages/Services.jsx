@@ -8,6 +8,8 @@ import {
   HiOutlineCheckCircle,
   HiArrowRight,
   HiArrowDown,
+  HiOutlineTrendingUp,
+  HiOutlineUserGroup,
 } from 'react-icons/hi'
 import { FaShopify, FaWordpress, FaGoogle, FaRobot } from 'react-icons/fa6'
 import { MdDesignServices, MdCampaign, MdStorefront, MdSearch } from 'react-icons/md'
@@ -155,6 +157,26 @@ const services = [
     iconColor: 'text-yellow-500',
     border: 'border-yellow-500/20 hover:border-yellow-500/50',
   },
+  {
+    icon: HiOutlineTrendingUp,
+    title: 'AI Lead Generation & Growth Marketing',
+    desc: 'AI-powered lead generation and growth campaigns that find, nurture, and convert high-quality prospects on autopilot.',
+    features: ['AI Lead Scoring', 'Automated Outreach', 'Funnel Optimisation', 'Growth Analytics'],
+    gradient: 'from-fuchsia-500/20 to-fuchsia-700/5',
+    iconBg: 'bg-fuchsia-500/15',
+    iconColor: 'text-fuchsia-500',
+    border: 'border-fuchsia-500/20 hover:border-fuchsia-500/50',
+  },
+  {
+    icon: HiOutlineUserGroup,
+    title: 'Care Agency Recruitment & Compliance Automation System',
+    desc: 'An all-in-one system for care agencies to automate candidate recruitment, onboarding, and CQC compliance tracking.',
+    features: ['Candidate Tracking', 'Automated Onboarding', 'DBS & Document Checks', 'Compliance Alerts'],
+    gradient: 'from-lime-500/20 to-lime-700/5',
+    iconBg: 'bg-lime-500/15',
+    iconColor: 'text-lime-600',
+    border: 'border-lime-500/20 hover:border-lime-500/50',
+  },
 ]
 
 const process = [
@@ -173,6 +195,7 @@ const servicesLd = {
     'E-Commerce Solutions', 'Custom Software Development', 'CRM Development',
     'Mobile App Development', 'AI Chatbot Development', 'Digital Marketing',
     'Search Engine Optimisation', 'Meta & Google Ads', 'Graphic Designing', 'IT Consulting',
+    'AI Lead Generation & Growth Marketing', 'Care Agency Recruitment & Compliance Automation System',
   ],
   areaServed: 'Worldwide',
   url: 'https://selectionstechnologies.com/services',
