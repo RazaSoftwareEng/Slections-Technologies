@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { FaWhatsapp, FaPhone } from 'react-icons/fa'
 
 export default function FloatingButtons() {
   return (
     <>
       {/* WhatsApp — bottom left */}
-      <motion.a
+      <m.a
         href="https://wa.me/447448091908"
         target="_blank"
         rel="noopener noreferrer"
@@ -19,10 +19,10 @@ export default function FloatingButtons() {
       >
         <FaWhatsapp size={22} />
         <span className="text-sm font-semibold hidden sm:inline">WhatsApp</span>
-      </motion.a>
+      </m.a>
 
       {/* Call Now — bottom right */}
-      <motion.a
+      <m.a
         href="tel:+447448091908"
         aria-label="Call Now"
         initial={{ scale: 0, opacity: 0 }}
@@ -34,7 +34,7 @@ export default function FloatingButtons() {
       >
         <FaPhone size={18} />
         <span className="text-sm font-semibold hidden sm:inline">Call Now</span>
-      </motion.a>
+      </m.a>
     </>
   )
 }

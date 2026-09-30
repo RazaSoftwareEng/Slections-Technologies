@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import SEO from '../components/SEO'
 import { blogs } from '../data/blogs'
 import { HiArrowLeft, HiClock, HiUser, HiArrowRight, HiOutlineScale, HiOutlineCurrencyDollar, HiOutlineSearch, HiOutlineDeviceMobile, HiOutlineClipboardCheck, HiOutlineShieldCheck } from 'react-icons/hi'
@@ -144,7 +144,7 @@ export default function BlogPost() {
         <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 60%)' }} />
         <div className="absolute inset-0 hero-grid opacity-20" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <Link to="/blog" className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-medium mb-8 transition-colors">
               <HiArrowLeft size={16} /> Back to Blog
             </Link>
@@ -154,7 +154,7 @@ export default function BlogPost() {
               <span className="flex items-center gap-1 text-white/70 text-xs"><HiClock size={12} />{post.readTime}</span>
               <span className="text-white/40">·</span>
               <span className="text-white/70 text-xs">
-                {new Date(post.date).toLocaleDateString('en-PK', { day: 'numeric', month: 'long', year: 'numeric' })}
+                {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight mb-5">
@@ -165,7 +165,7 @@ export default function BlogPost() {
               <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-xs font-bold">ST</div>
               <span className="flex items-center gap-1 text-white/70 text-sm"><HiUser size={13} />{post.author}</span>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -175,7 +175,7 @@ export default function BlogPost() {
           <div className="grid lg:grid-cols-3 gap-10">
 
             {/* Content */}
-            <motion.article
+            <m.article
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -202,7 +202,7 @@ export default function BlogPost() {
                   <Link to={`/blog/${prev.slug}`} className="group flex items-start gap-3 p-4 bg-white border border-slate-100 rounded-2xl hover:border-brand-blue/30 hover:shadow-md transition-all">
                     <HiArrowLeft className="text-slate-400 group-hover:text-brand-blue mt-0.5 shrink-0 transition-colors" size={18} />
                     <div>
-                      <p className="text-xs text-slate-400 mb-1">Previous</p>
+                      <p className="text-xs text-slate-500 mb-1">Previous</p>
                       <p className="text-sm font-semibold text-navy group-hover:text-brand-blue transition-colors leading-tight line-clamp-2">{prev.title}</p>
                     </div>
                   </Link>
@@ -210,17 +210,17 @@ export default function BlogPost() {
                 {next && (
                   <Link to={`/blog/${next.slug}`} className="group flex items-start gap-3 p-4 bg-white border border-slate-100 rounded-2xl hover:border-brand-blue/30 hover:shadow-md transition-all sm:ml-auto text-right">
                     <div>
-                      <p className="text-xs text-slate-400 mb-1">Next</p>
+                      <p className="text-xs text-slate-500 mb-1">Next</p>
                       <p className="text-sm font-semibold text-navy group-hover:text-brand-blue transition-colors leading-tight line-clamp-2">{next.title}</p>
                     </div>
                     <HiArrowRight className="text-slate-400 group-hover:text-brand-blue mt-0.5 shrink-0 transition-colors" size={18} />
                   </Link>
                 )}
               </div>
-            </motion.article>
+            </m.article>
 
             {/* Sidebar */}
-            <motion.aside
+            <m.aside
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -239,7 +239,7 @@ export default function BlogPost() {
                   href="https://wa.me/447448091908"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-2.5 bg-green-500 hover:bg-green-400 text-white text-xs font-bold rounded-xl transition-colors"
+                  className="flex items-center justify-center gap-2 py-2.5 bg-green-700 hover:bg-green-800 text-white text-xs font-bold rounded-xl transition-colors"
                 >
                   <FaWhatsapp size={14} /> WhatsApp Us
                 </a>
@@ -256,13 +256,13 @@ export default function BlogPost() {
                       </div>
                       <div>
                         <p className="text-xs font-semibold text-navy leading-snug group-hover:text-brand-blue transition-colors line-clamp-2">{b.title}</p>
-                        <span className="text-xs text-slate-400 mt-0.5 block">{b.readTime}</span>
+                        <span className="text-xs text-slate-500 mt-0.5 block">{b.readTime}</span>
                       </div>
                     </Link>
                   ))}
                 </div>
               </div>
-            </motion.aside>
+            </m.aside>
           </div>
         </div>
       </section>

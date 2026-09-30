@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { HiArrowRight, HiCheck, HiX, HiOutlineShieldCheck, HiOutlineBadgeCheck, HiOutlineSupport } from 'react-icons/hi'
 import { FaStar, FaWhatsapp, FaMedal, FaCrown, FaGem } from 'react-icons/fa'
 
@@ -84,6 +84,9 @@ export const growthPlans = [
 ]
 
 export default function PricingPlans({ showHeader = true }) {
+  // Without the section's own h2, plan names are the next heading level below the page h1
+  const PlanHeading = showHeader ? 'h3' : 'h2'
+
   return (
     <section className="py-24 bg-gradient-to-b from-white via-surface to-white relative overflow-hidden">
       <Orb className="w-96 h-96 bg-brand-blue -top-32 -left-32 opacity-[0.07]" />
@@ -91,35 +94,35 @@ export default function PricingPlans({ showHeader = true }) {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {showHeader && (
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             variants={stagger}
             className="text-center max-w-2xl mx-auto mb-16"
           >
-            <motion.span
+            <m.span
               variants={fadeUp}
-              className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold tracking-widest uppercase mb-4"
+              className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-blue-700 text-xs font-semibold tracking-widest uppercase mb-4"
             >
               Growth Packages
-            </motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-navy mb-4 leading-tight">
+            </m.span>
+            <m.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-navy mb-4 leading-tight">
               Website, Marketing & SEO — <span className="text-gradient">All in One Plan</span>
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-slate-500 text-base leading-relaxed mb-4">
+            </m.h2>
+            <m.p variants={fadeUp} className="text-slate-500 text-base leading-relaxed mb-4">
               Stop juggling multiple agencies. Each package combines a professional website, SEO, digital
               marketing and smart AI automation — so your business grows on every channel.
-            </motion.p>
-            <motion.div variants={fadeUp}>
+            </m.p>
+            <m.div variants={fadeUp}>
               <Link to="/pricing" className="inline-flex items-center gap-1.5 text-brand-blue font-semibold text-sm hover:gap-2.5 transition-all">
                 Compare all plans in detail <HiArrowRight />
               </Link>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
 
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
@@ -131,7 +134,7 @@ export default function PricingPlans({ showHeader = true }) {
             const dark = plan.popular
             const t = plan.theme
             return (
-              <motion.div
+              <m.div
                 key={plan.name}
                 variants={fadeUp}
                 custom={i}
@@ -174,7 +177,7 @@ export default function PricingPlans({ showHeader = true }) {
                     )}
                   </div>
 
-                  <h3 className={`relative text-2xl font-bold mb-2 ${dark ? 'text-white' : 'text-navy'}`}>{plan.name}</h3>
+                  <PlanHeading className={`relative text-2xl font-bold mb-2 ${dark ? 'text-white' : 'text-navy'}`}>{plan.name}</PlanHeading>
                   <p className={`relative text-sm leading-relaxed mb-6 min-h-[2.5rem] ${dark ? 'text-slate-300' : 'text-slate-500'}`}>
                     {plan.tagline}
                   </p>
@@ -240,13 +243,13 @@ export default function PricingPlans({ showHeader = true }) {
                     Get Started <HiArrowRight className="transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
-              </motion.div>
+              </m.div>
             )
           })}
-        </motion.div>
+        </m.div>
 
         {/* Trust strip + custom plan CTA */}
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
@@ -289,7 +292,7 @@ export default function PricingPlans({ showHeader = true }) {
               </a>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

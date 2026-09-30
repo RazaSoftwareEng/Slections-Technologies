@@ -1,6 +1,6 @@
 import { useState, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import {
   HiArrowRight,
   HiCheck,
@@ -152,7 +152,7 @@ export default function Pricing() {
   return (
     <>
       <SEO
-        title="Pricing | Website, SEO, Marketing & AI Automation Packages"
+        title="Pricing | Website & SEO Packages"
         description="Transparent monthly packages from Selections Technologies — combining a professional website, SEO, digital marketing and AI chatbot automation. Plans from $249/month."
         keywords="website and SEO package, digital marketing packages UK, SEO pricing, website design pricing, AI chatbot pricing, affordable marketing plans, Selections Technologies pricing"
         canonical="/pricing"
@@ -165,18 +165,18 @@ export default function Pricing() {
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-violet-500 rounded-full blur-3xl opacity-10 pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4">
+          <m.div initial={false} animate="visible" variants={stagger} className="motion-safe:animate-fade-up">
+            <m.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4">
               Pricing
-            </motion.span>
-            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6">
+            </m.span>
+            <m.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6">
               Simple Plans, <span className="text-gradient">Serious Growth</span>
-            </motion.h1>
-            <motion.p variants={fadeUp} className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed">
+            </m.h1>
+            <m.p variants={fadeUp} className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed">
               One monthly package for your website, SEO, marketing and AI automation — no hidden fees,
               no juggling multiple agencies.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
       </section>
@@ -187,25 +187,25 @@ export default function Pricing() {
       {/* ─── Comparison Table ─────────────────────────────── */}
       <section className="py-24 bg-surface">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             variants={stagger}
             className="text-center max-w-2xl mx-auto mb-12"
           >
-            <motion.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold tracking-widest uppercase mb-4">
+            <m.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-blue-700 text-xs font-semibold tracking-widest uppercase mb-4">
               Compare Plans
-            </motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-navy mb-4 leading-tight">
+            </m.span>
+            <m.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-navy mb-4 leading-tight">
               Find the <span className="text-gradient">Perfect Fit</span>
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-slate-500 text-base leading-relaxed">
+            </m.h2>
+            <m.p variants={fadeUp} className="text-slate-500 text-base leading-relaxed">
               See exactly what&apos;s included in each package, side by side.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
@@ -286,27 +286,27 @@ export default function Pricing() {
                 </tr>
               </tbody>
             </table>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* ─── FAQ ──────────────────────────────────────────── */}
       <section className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             variants={stagger}
             className="text-center mb-12"
           >
-            <motion.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold tracking-widest uppercase mb-4">
+            <m.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-blue-700 text-xs font-semibold tracking-widest uppercase mb-4">
               FAQ
-            </motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-navy leading-tight">
+            </m.span>
+            <m.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-navy leading-tight">
               Pricing <span className="text-gradient">Questions</span>
-            </motion.h2>
-          </motion.div>
+            </m.h2>
+          </m.div>
 
           <div className="space-y-4">
             {faqs.map(({ q, a }, i) => {
@@ -327,7 +327,7 @@ export default function Pricing() {
                   </button>
                   <AnimatePresence initial={false}>
                     {open && (
-                      <motion.div
+                      <m.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -335,7 +335,7 @@ export default function Pricing() {
                         className="overflow-hidden"
                       >
                         <p className="px-5 sm:px-6 pb-6 text-slate-500 text-sm leading-relaxed">{a}</p>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
                 </div>

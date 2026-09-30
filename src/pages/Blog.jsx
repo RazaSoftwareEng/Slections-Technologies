@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import SEO from '../components/SEO'
 import { blogs } from '../data/blogs'
 import { HiArrowRight, HiClock, HiOutlineScale, HiOutlineCurrencyDollar, HiOutlineSearch, HiOutlineDeviceMobile, HiOutlineClipboardCheck, HiOutlineShieldCheck } from 'react-icons/hi'
@@ -60,7 +60,7 @@ export default function Blog() {
   return (
     <>
       <SEO
-        title="Blog | Web Development, SEO & Digital Marketing Tips"
+        title="Blog | Web, SEO & Marketing Tips"
         description="Expert articles on web development, Shopify, WordPress, SEO, digital marketing, and IT strategies for UK businesses. Written by Selections Technologies."
         keywords="web development blog UK, SEO tips UK, digital marketing blog UK, shopify guide UK, wordpress tips UK, IT blog UK, selections technologies blog"
         canonical="/blog"
@@ -72,17 +72,17 @@ export default function Blog() {
         <div className="absolute inset-0 hero-grid opacity-40" />
         <div className="absolute top-10 right-1/3 w-80 h-80 bg-brand-blue rounded-full blur-3xl opacity-10 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4">
+          <m.div initial={false} animate="visible" variants={stagger} className="motion-safe:animate-fade-up">
+            <m.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4">
               Knowledge Base
-            </motion.span>
-            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6">
+            </m.span>
+            <m.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6">
               Our <span className="text-gradient">Blog</span>
-            </motion.h1>
-            <motion.p variants={fadeUp} className="max-w-xl mx-auto text-slate-400 text-lg leading-relaxed">
+            </m.h1>
+            <m.p variants={fadeUp} className="max-w-xl mx-auto text-slate-400 text-lg leading-relaxed">
               Expert guides on web development, SEO, digital marketing, and e-commerce — written specifically for UK businesses.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
       </section>
@@ -91,7 +91,8 @@ export default function Blog() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Articles grid */}
-          <motion.div
+          <h2 className="sr-only">Latest articles</h2>
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
@@ -99,7 +100,7 @@ export default function Blog() {
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7"
           >
             {blogs.map((post, i) => (
-              <motion.div key={post.id} custom={i} variants={fadeUp}>
+              <m.div key={post.id} custom={i} variants={fadeUp}>
                 <Link
                   to={`/blog/${post.slug}`}
                   className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full"
@@ -118,9 +119,9 @@ export default function Blog() {
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="flex items-center gap-1 text-xs text-slate-400"><HiClock size={12} />{post.readTime}</span>
+                      <span className="flex items-center gap-1 text-xs text-slate-500"><HiClock size={12} />{post.readTime}</span>
                       <span className="text-slate-200">·</span>
-                      <span className="text-xs text-slate-400">{new Date(post.date).toLocaleDateString('en-PK', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                      <span className="text-xs text-slate-500">{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}</span>
                     </div>
                     <h3 className="text-base font-extrabold text-navy mb-3 leading-snug group-hover:text-brand-blue transition-colors">
                       {post.title}
@@ -133,16 +134,16 @@ export default function Blog() {
                     </span>
                   </div>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 bg-navy">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+          <m.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
               Need Help With Your <span className="text-gradient">Digital Growth?</span>
             </h2>
@@ -150,7 +151,7 @@ export default function Blog() {
             <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-blue hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg shadow-brand-blue/30 hover:-translate-y-0.5 transition-all">
               Get a Free Consultation <HiArrowRight />
             </Link>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </>

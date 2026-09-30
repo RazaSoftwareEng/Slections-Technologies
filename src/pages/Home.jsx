@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import {
   HiOutlineUsers,
   HiOutlineCode,
@@ -121,12 +121,12 @@ const stagger = {
 }
 
 const teaserServices = [
-  { icon: HiOutlineGlobeAlt, title: 'Web Development', desc: 'Fast, modern websites & web apps' },
-  { icon: FaShopify, title: 'Shopify & WordPress', desc: 'Stores and sites that convert' },
-  { icon: HiOutlineDeviceMobile, title: 'Mobile Apps', desc: 'iOS & Android with React Native' },
-  { icon: HiOutlineSpeakerphone, title: 'Digital Marketing', desc: 'Campaigns that drive growth' },
-  { icon: HiOutlineTrendingUp, title: 'SEO & Google Ads', desc: 'Rank higher, reach more buyers' },
-  { icon: FaRobot, title: 'AI Chatbot', desc: '24/7 automated support & leads' },
+  { icon: HiOutlineGlobeAlt, slug: 'web-development', title: 'Web Development', desc: 'Fast, modern websites & web apps' },
+  { icon: FaShopify, slug: 'shopify-development', title: 'Shopify & WordPress', desc: 'Stores and sites that convert' },
+  { icon: HiOutlineDeviceMobile, slug: 'mobile-app-development', title: 'Mobile Apps', desc: 'iOS & Android with React Native' },
+  { icon: HiOutlineSpeakerphone, slug: 'digital-marketing', title: 'Digital Marketing', desc: 'Campaigns that drive growth' },
+  { icon: HiOutlineTrendingUp, slug: 'seo', title: 'SEO & Google Ads', desc: 'Rank higher, reach more buyers' },
+  { icon: FaRobot, slug: 'ai-chatbot-development', title: 'AI Chatbot', desc: '24/7 automated support & leads' },
 ]
 
 const whyCards = [
@@ -308,42 +308,24 @@ export default function Home() {
         <Orb className="w-64 h-64 bg-purple-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-blue/40 bg-brand-blue/10 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-8"
-          >
+          {/* Hero entrance uses CSS animations so it plays from the pre-rendered HTML, before JS loads */}
+          <div className="motion-safe:animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-blue/40 bg-brand-blue/10 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse" />
             IT Solutions &amp; Services
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6"
-          >
+          {/* Heading + intro render without a fade so they paint immediately (LCP element) */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
             Empowering Businesses{' '}
             <span className="text-gradient block sm:inline">Through Technology</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="max-w-2xl mx-auto text-slate-400 text-base sm:text-lg leading-relaxed mb-10"
-          >
+          <p className="max-w-2xl mx-auto text-slate-400 text-base sm:text-lg leading-relaxed mb-10">
             Selections Technologies provides innovative web development, software solutions,
             and digital transformation services to help businesses grow and succeed.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+          <div className="motion-safe:animate-fade-up [animation-delay:150ms] flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-blue hover:bg-blue-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-xl shadow-brand-blue/30 hover:shadow-brand-blue/50 hover:-translate-y-0.5"
@@ -356,14 +338,9 @@ export default function Home() {
             >
               View Our Work
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-20 grid grid-cols-3 gap-6 max-w-lg mx-auto"
-          >
+          <div className="motion-safe:animate-fade-up [animation-delay:300ms] mt-20 grid grid-cols-3 gap-6 max-w-lg mx-auto">
             {[
               { value: '50+', label: 'Projects Delivered' },
               { value: '30+', label: 'Happy Clients' },
@@ -374,7 +351,7 @@ export default function Home() {
                 <div className="text-xs text-slate-500 mt-1">{label}</div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-surface to-transparent" />
@@ -383,14 +360,14 @@ export default function Home() {
       {/* ─── Why Choose Us ────────────────────────────────── */}
       <section className="py-24 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold tracking-widest uppercase mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-blue-700 text-xs font-semibold tracking-widest uppercase mb-4">
               Why Choose Us
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy leading-tight">
@@ -399,9 +376,9 @@ export default function Home() {
             <p className="mt-4 max-w-xl mx-auto text-slate-500 text-base">
               We combine technical expertise with a client-first mindset to deliver solutions that truly make a difference.
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
@@ -409,7 +386,7 @@ export default function Home() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {whyCards.map(({ icon: Icon, title, desc, color, border, iconColor }) => (
-              <motion.div
+              <m.div
                 key={title}
                 variants={fadeUp}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
@@ -420,9 +397,9 @@ export default function Home() {
                 </div>
                 <h3 className="font-bold text-navy text-lg mb-2">{title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -432,7 +409,7 @@ export default function Home() {
         <Orb className="w-72 h-72 bg-brand-cyan bottom-0 right-0 opacity-10" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
@@ -462,9 +439,9 @@ export default function Home() {
                 Verified Reviews
               </span>
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
@@ -472,7 +449,7 @@ export default function Home() {
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {testimonials.map((t, i) => (
-              <motion.div
+              <m.div
                 key={t.name}
                 custom={i}
                 variants={fadeUp}
@@ -511,9 +488,9 @@ export default function Home() {
                     {t.service}
                   </span>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -524,14 +501,14 @@ export default function Home() {
         <Orb className="w-80 h-80 bg-indigo-400 -bottom-24 -left-24 opacity-20" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             variants={stagger}
             className="grid lg:grid-cols-2 gap-12 items-center"
           >
-            <motion.div variants={fadeUp}>
+            <m.div variants={fadeUp}>
               <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-cyan-200 text-xs font-semibold tracking-widest uppercase mb-4">
                 Our Services
               </span>
@@ -549,13 +526,13 @@ export default function Home() {
               >
                 Explore All Services <HiArrowRight />
               </Link>
-            </motion.div>
+            </m.div>
 
-            <motion.div variants={stagger} className="grid grid-cols-2 gap-4">
-              {teaserServices.map(({ icon: Icon, title, desc }, i) => (
-                <motion.div key={title} variants={fadeUp} custom={i}>
+            <m.div variants={stagger} className="grid grid-cols-2 gap-4">
+              {teaserServices.map(({ icon: Icon, slug, title, desc }, i) => (
+                <m.div key={title} variants={fadeUp} custom={i}>
                   <Link
-                    to="/services"
+                    to={`/services/${slug}`}
                     className="group flex flex-col h-full p-5 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-sm hover:bg-white hover:border-white hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 transition-all duration-300"
                   >
                     <div className="w-11 h-11 mb-4 rounded-xl flex items-center justify-center text-xl bg-white/15 text-white group-hover:bg-gradient-to-br group-hover:from-brand-blue group-hover:to-brand-cyan transition-all duration-300">
@@ -564,10 +541,10 @@ export default function Home() {
                     <p className="text-white group-hover:text-navy text-sm sm:text-base font-semibold mb-1 transition-colors">{title}</p>
                     <p className="text-blue-100/80 group-hover:text-slate-500 text-xs leading-relaxed transition-colors hidden sm:block">{desc}</p>
                   </Link>
-                </motion.div>
+                </m.div>
               ))}
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </section>
 
@@ -583,44 +560,44 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
 
             {/* Left — pitch */}
-            <motion.div
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-80px' }}
               variants={stagger}
             >
-              <motion.span
+              <m.span
                 variants={fadeUp}
                 className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4"
               >
                 Free Consultation
-              </motion.span>
-              <motion.h2
+              </m.span>
+              <m.h2
                 variants={fadeUp}
                 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight"
               >
                 Get a <span className="text-gradient">Free Quote</span>{' '}
                 in 24 Hours
-              </motion.h2>
-              <motion.p
+              </m.h2>
+              <m.p
                 variants={fadeUp}
                 className="text-slate-400 text-base leading-relaxed mb-8"
               >
                 Tell us about your project and we'll get back to you with a detailed proposal — no commitment, no cost.
-              </motion.p>
+              </m.p>
 
-              <motion.div variants={stagger} className="space-y-4 mb-10">
+              <m.div variants={stagger} className="space-y-4 mb-10">
                 {trustPoints.map(({ icon: Icon, text }) => (
-                  <motion.div key={text} variants={fadeUp} className="flex items-center gap-3">
+                  <m.div key={text} variants={fadeUp} className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-brand-blue/20 flex items-center justify-center shrink-0">
                       <Icon className="text-brand-cyan" size={17} />
                     </div>
                     <p className="text-slate-300 text-sm">{text}</p>
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
 
-              <motion.a
+              <m.a
                 variants={fadeUp}
                 href="https://wa.me/447448091908"
                 target="_blank"
@@ -629,11 +606,11 @@ export default function Home() {
               >
                 <FaWhatsapp size={18} />
                 Chat on WhatsApp Instead
-              </motion.a>
-            </motion.div>
+              </m.a>
+            </m.div>
 
             {/* Right — form */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -699,6 +676,7 @@ export default function Home() {
                         </label>
                         <select
                           name="service"
+                          aria-label="Service needed"
                           value={form.service}
                           onChange={handleChange}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue focus:bg-white transition-all appearance-none"
@@ -749,7 +727,7 @@ export default function Home() {
                   </>
                 )}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -758,19 +736,19 @@ export default function Home() {
       <section className="py-24 bg-gradient-to-br from-brand-blue via-blue-600 to-brand-cyan relative overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-20" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={stagger}
           >
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-5">
+            <m.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-5">
               Ready to Transform Your Business?
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-blue-100 text-base sm:text-lg mb-10 max-w-xl mx-auto">
+            </m.h2>
+            <m.p variants={fadeUp} className="text-blue-100 text-base sm:text-lg mb-10 max-w-xl mx-auto">
               Let's build something extraordinary together. Get in touch with our team today and take the first step toward digital excellence.
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+            </m.p>
+            <m.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-blue font-bold rounded-xl hover:bg-blue-50 transition-all shadow-xl hover:-translate-y-0.5"
@@ -783,8 +761,8 @@ export default function Home() {
               >
                 View Our Work
               </Link>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </section>
     </>

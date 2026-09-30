@@ -12,9 +12,10 @@ export default function SEO({
   ogType = 'website',
   ogImage = DEFAULT_IMAGE,
   noIndex = false,
+  appendSiteName = true,
 }) {
   const fullTitle = title
-    ? `${title} | ${SITE_NAME}`
+    ? appendSiteName ? `${title} | ${SITE_NAME}` : title
     : `${SITE_NAME} | Web Development & IT Solutions UK`
 
   const url = canonical ? `${BASE_URL}${canonical}` : BASE_URL

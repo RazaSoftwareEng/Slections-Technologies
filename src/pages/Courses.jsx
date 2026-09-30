@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { HiX, HiOutlineClock, HiOutlineAcademicCap, HiOutlineGlobe, HiOutlineCheckCircle, HiArrowRight } from 'react-icons/hi'
-import { FaShopify, FaWordpress, FaGoogle, FaMeta, FaChartLine } from 'react-icons/fa6'
+import { FaShopify, FaWordpress, FaMeta, FaChartLine } from 'react-icons/fa6'
 import { MdStorefront, MdDesignServices, MdSmartphone, MdSearch } from 'react-icons/md'
 import { SiOpenai } from 'react-icons/si'
 import { Link } from 'react-router-dom'
@@ -309,14 +309,14 @@ const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.07 } }
 function CourseModal({ course, onClose }) {
   const Icon = course.icon
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
       className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
     >
-      <motion.div
+      <m.div
         initial={{ opacity: 0, scale: 0.92, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.92, y: 20 }}
@@ -386,8 +386,8 @@ function CourseModal({ course, onClose }) {
             </a>
           </div>
         </div>
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   )
 }
 
@@ -397,7 +397,7 @@ export default function Courses() {
   return (
     <>
       <SEO
-        title="Online IT Courses | Web Dev, Shopify, SEO, Digital Marketing & More"
+        title="IT & Digital Marketing Courses"
         description="Learn in-demand IT skills online with Selections Technologies. Courses in Shopify, WordPress, Web Development with AI, Digital Marketing, SEO, Graphic Design, Meta & Google Ads. Worldwide enrollment. Affordable prices."
         keywords="online IT courses UK, web development course, Shopify course, WordPress course, digital marketing course, SEO course, graphic designing course, Meta ads course, Google ads course, full stack development course, social media marketing course, ecommerce course, AI development course, online learning UK, IT training worldwide"
         canonical="/courses"
@@ -410,17 +410,17 @@ export default function Courses() {
         <div className="absolute bottom-0 left-10 w-80 h-80 bg-brand-cyan rounded-full blur-3xl opacity-10 pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4">
+          <m.div initial={false} animate="visible" variants={stagger} className="motion-safe:animate-fade-up">
+            <m.span variants={fadeUp} className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4">
               Online Learning
-            </motion.span>
-            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-5">
+            </m.span>
+            <m.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-5">
               Master In-Demand <span className="text-gradient">IT Skills</span>
-            </motion.h1>
-            <motion.p variants={fadeUp} className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed mb-8">
+            </m.h1>
+            <m.p variants={fadeUp} className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed mb-8">
               Industry-led online courses designed to get you job-ready or freelance-ready. Learn at your own pace, worldwide, at prices that make sense.
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+            </m.p>
+            <m.div variants={fadeUp} className="flex flex-wrap justify-center gap-6 text-sm text-slate-400">
               {[
                 { icon: '🌍', text: 'Worldwide Enrollment' },
                 { icon: '🎓', text: 'Certificate Included' },
@@ -431,8 +431,8 @@ export default function Courses() {
                   {icon} {text}
                 </span>
               ))}
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
       </section>
@@ -440,7 +440,8 @@ export default function Courses() {
       {/* ─── Course Cards ─────────────────────────────────── */}
       <section className="py-24 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <h2 className="sr-only">All courses</h2>
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
@@ -450,7 +451,7 @@ export default function Courses() {
             {courses.map((course, i) => {
               const Icon = course.icon
               return (
-                <motion.div
+                <m.div
                   key={course.id}
                   variants={fadeUp}
                   custom={i}
@@ -484,9 +485,7 @@ export default function Courses() {
                   <div className="flex justify-center -mt-5 relative z-10 px-4">
                     <span
                       className="px-5 py-2 bg-white text-xs font-bold rounded-full shadow-lg border border-slate-100 whitespace-nowrap"
-                      style={{ color: course.headerGradient.split('#')[1]
-                        ? `#${course.headerGradient.split(' ')[1]?.replace('#','').replace('0%,','') ?? '2563EB'}`
-                        : '#2563EB',
+                      style={{
                         color: course.id === 1 ? '#16a34a'
                           : course.id === 2 ? '#7c3aed'
                           : course.id === 3 ? '#1d4ed8'
@@ -518,10 +517,10 @@ export default function Courses() {
                       </span>
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )
             })}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -529,7 +528,7 @@ export default function Courses() {
       <section className="py-20 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-25" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -540,9 +539,9 @@ export default function Courses() {
               Why Learn with <span className="text-gradient">Selections Technologies?</span>
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto text-sm">Real skills. Real projects. Real results — for students and professionals worldwide.</p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -555,7 +554,7 @@ export default function Courses() {
               { icon: '🌍', title: 'Worldwide Access', desc: 'Enroll from anywhere. Content in English and Urdu for maximum clarity.' },
               { icon: '💬', title: 'Lifetime Support', desc: 'Ask questions anytime — via WhatsApp, email, or community group.' },
             ].map(({ icon, title, desc }, i) => (
-              <motion.div
+              <m.div
                 key={title}
                 variants={fadeUp}
                 custom={i}
@@ -564,23 +563,23 @@ export default function Courses() {
                 <div className="text-4xl mb-4">{icon}</div>
                 <h3 className="text-white font-bold mb-2">{title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────── */}
       <section className="py-20 bg-gradient-to-r from-brand-blue to-brand-cyan">
         <div className="relative max-w-3xl mx-auto px-4 text-center">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+          <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+            <m.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
               Ready to Start Your Learning Journey?
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-blue-100 mb-8">
+            </m.h2>
+            <m.p variants={fadeUp} className="text-blue-100 mb-8">
               Enroll today and gain the skills that employers and clients are paying premium for in 2025.
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+            </m.p>
+            <m.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-blue font-bold rounded-xl hover:bg-blue-50 transition-all shadow-xl hover:-translate-y-0.5"
@@ -595,8 +594,8 @@ export default function Courses() {
               >
                 WhatsApp Us
               </a>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </section>
 

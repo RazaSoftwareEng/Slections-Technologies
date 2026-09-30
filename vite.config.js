@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react()],
   build: {
     // Code splitting — separates vendor libs from app code
     rollupOptions: {
       output: {
-        manualChunks: {
+        // Vendor splitting only applies to the browser bundle; the SSR build keeps deps external
+        manualChunks: isSsrBuild ? undefined : {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'motion': ['framer-motion'],
           'icons': ['react-icons'],
@@ -28,4 +29,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'framer-motion'],
   },
-})
+}))

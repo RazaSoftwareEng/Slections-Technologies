@@ -1,18 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { HelmetProvider, Helmet } from 'react-helmet-async'
+import { lazy, Suspense } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { LazyMotion, domAnimation } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FloatingButtons from './components/FloatingButtons'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
-import Services from './pages/Services'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Courses from './pages/Courses'
-import Pricing from './pages/Pricing'
-import Portfolio from './pages/Portfolio'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
+const Services = lazy(() => import('./pages/Services'))
+const About = lazy(() => import('./pages/About'))
+const Contact = lazy(() => import('./pages/Contact'))
+const Courses = lazy(() => import('./pages/Courses'))
+const Pricing = lazy(() => import('./pages/Pricing'))
+const Portfolio = lazy(() => import('./pages/Portfolio'))
+const Blog = lazy(() => import('./pages/Blog'))
+const BlogPost = lazy(() => import('./pages/BlogPost'))
+const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 const BASE = 'https://selectionstechnologies.com'
 
@@ -27,9 +31,9 @@ const structuredData = {
       url: BASE,
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE}/og-image.png`,
-        width: 512,
-        height: 512,
+        url: `${BASE}/logo.png`,
+        width: 600,
+        height: 120,
       },
       image: `${BASE}/og-image.png`,
       description:
@@ -126,23 +130,25 @@ const structuredData = {
     },
   ],
 }
-
+// Router and HelmetProvider are supplied by the entry point:
+// BrowserRouter in main.jsx (browser), StaticRouter in entry-server.jsx (pre-render).
 export default function App() {
   return (
-    <HelmetProvider>
+    <LazyMotion features={domAnimation}>
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
-      <Router>
-        <ScrollToTop />
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow">
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Suspense fallback={<div className="min-h-screen bg-navy" />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/services/:slug" element={<ServiceDetail />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
@@ -150,12 +156,13 @@ export default function App() {
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
-          </main>
-          <Footer />
-        </div>
-        <FloatingButtons />
-      </Router>
-    </HelmetProvider>
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+      <FloatingButtons />
+    </LazyMotion>
   )
 }

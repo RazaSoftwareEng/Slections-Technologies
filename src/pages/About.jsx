@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import SEO from '../components/SEO'
 import { HiOutlineLightningBolt, HiOutlineShieldCheck, HiOutlineStar, HiOutlineHeart, HiArrowRight } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
@@ -71,7 +71,7 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Us | IT Company UK — Our Mission, Vision & Values"
+        title="About Us | UK IT & Web Agency"
         description="Selections Technologies is a dedicated IT company delivering high-quality software solutions, modern websites, and innovative digital services. Learn about our mission, vision, and core values."
         keywords="about Selections Technologies, Selection Technologies company, Selections Tech, Selection Tech, IT company UK, software house UK, web development agency UK, digital agency UK, tech company UK, professional web developers UK, graphic design company UK, Shopify experts UK, WordPress experts UK, digital marketing agency UK, who is Selections Technologies, best software house UK, top IT company UK, technology solutions UK, company mission vision values"
         canonical="/about"
@@ -85,26 +85,26 @@ export default function About() {
         <div className="absolute bottom-0 left-10 w-80 h-80 bg-brand-cyan rounded-full blur-3xl opacity-10 pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.span
+          <m.div initial={false} animate="visible" variants={stagger} className="motion-safe:animate-fade-up">
+            <m.span
               variants={fadeUp}
               className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4"
             >
               Who We Are
-            </motion.span>
-            <motion.h1
+            </m.span>
+            <m.h1
               variants={fadeUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6"
             >
               About <span className="text-gradient">Us</span>
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
               variants={fadeUp}
               className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed"
             >
               We are a passionate team of technologists committed to building digital solutions that matter.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
       </section>
@@ -112,7 +112,7 @@ export default function About() {
       {/* ─── Company Overview ─────────────────────────────── */}
       <section className="py-24 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
@@ -120,8 +120,8 @@ export default function About() {
             className="grid md:grid-cols-2 gap-14 items-center"
           >
             {/* Text */}
-            <motion.div variants={fadeUp}>
-              <span className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold tracking-widest uppercase mb-4">
+            <m.div variants={fadeUp}>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-blue-700 text-xs font-semibold tracking-widest uppercase mb-4">
                 Company Overview
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-navy mb-6 leading-tight">
@@ -144,15 +144,15 @@ export default function About() {
               >
                 Work With Us <HiArrowRight />
               </Link>
-            </motion.div>
+            </m.div>
 
             {/* Stats grid */}
-            <motion.div
+            <m.div
               variants={stagger}
               className="grid grid-cols-2 gap-5"
             >
               {stats.map(({ value, label }, i) => (
-                <motion.div
+                <m.div
                   key={label}
                   variants={fadeUp}
                   custom={i}
@@ -160,10 +160,10 @@ export default function About() {
                 >
                   <div className="text-3xl sm:text-4xl font-extrabold text-gradient mb-2">{value}</div>
                   <div className="text-slate-500 text-sm font-medium">{label}</div>
-                </motion.div>
+                </m.div>
               ))}
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </section>
 
@@ -171,7 +171,7 @@ export default function About() {
       <section className="py-24 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-30" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
@@ -179,7 +179,7 @@ export default function About() {
             className="grid md:grid-cols-2 gap-8"
           >
             {/* Mission */}
-            <motion.div
+            <m.div
               variants={fadeUp}
               className="p-8 rounded-2xl glass border-brand-blue/20 hover:border-brand-blue/50 transition-colors"
             >
@@ -192,10 +192,10 @@ export default function About() {
                 achieve their goals, streamline operations, and stay ahead in a rapidly evolving
                 digital landscape.
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Vision */}
-            <motion.div
+            <m.div
               variants={fadeUp}
               className="p-8 rounded-2xl glass border-brand-cyan/20 hover:border-brand-cyan/50 transition-colors"
             >
@@ -208,30 +208,30 @@ export default function About() {
                 commitment to innovation, quality, and the transformative impact we create for every
                 client we serve.
               </p>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </section>
 
       {/* ─── Values ───────────────────────────────────────── */}
       <section className="py-24 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold tracking-widest uppercase mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/10 text-blue-700 text-xs font-semibold tracking-widest uppercase mb-4">
               Core Values
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
               The Principles That <span className="text-gradient">Drive Us</span>
             </h2>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
@@ -239,7 +239,7 @@ export default function About() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {values.map(({ icon: Icon, title, desc, color, bg }, i) => (
-              <motion.div
+              <m.div
                 key={title}
                 variants={fadeUp}
                 custom={i}
@@ -251,9 +251,9 @@ export default function About() {
                 </div>
                 <h3 className="font-bold text-navy text-lg mb-2">{title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -262,20 +262,20 @@ export default function About() {
         <div className="absolute inset-0 hero-grid opacity-20" />
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-blue rounded-full blur-3xl opacity-10 pointer-events-none" />
         <div className="relative max-w-3xl mx-auto px-4 text-center">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={stagger}
           >
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+            <m.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
               Let's Build Something{' '}
               <span className="text-gradient">Great Together</span>
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-slate-400 mb-8">
+            </m.h2>
+            <m.p variants={fadeUp} className="text-slate-400 mb-8">
               Partner with us and experience the Selections Technologies difference.
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+            </m.p>
+            <m.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-blue hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-xl shadow-brand-blue/30 hover:-translate-y-0.5"
@@ -288,8 +288,8 @@ export default function About() {
               >
                 Our Services
               </Link>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </section>
     </>

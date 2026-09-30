@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import CountUp from '../components/CountUp'
 import { HiExternalLink, HiOutlineHome, HiOutlineShoppingCart, HiOutlineCode, HiOutlineDesktopComputer } from 'react-icons/hi'
@@ -15,7 +15,8 @@ const categoryIcons = {
 
 const getFavicon = (url) => {
   try {
-    return `https://${new URL(url).hostname}/favicon.ico`
+    // Google's favicon service always returns an image, avoiding 404s from sites without /favicon.ico
+    return `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=64`
   } catch {
     return null
   }
@@ -448,13 +449,13 @@ const projects = [
 
 const techColors = {
   WordPress:    'bg-blue-50 text-brand-blue border border-blue-100',
-  WooCommerce:  'bg-violet-50 text-violet-600 border border-violet-100',
-  HTML:         'bg-orange-50 text-orange-600 border border-orange-100',
-  CSS:          'bg-sky-50 text-sky-600 border border-sky-100',
+  WooCommerce:  'bg-violet-50 text-violet-700 border border-violet-100',
+  HTML:         'bg-orange-50 text-orange-700 border border-orange-100',
+  CSS:          'bg-sky-50 text-sky-700 border border-sky-100',
   JavaScript:   'bg-yellow-50 text-yellow-700 border border-yellow-100',
-  Bootstrap:    'bg-purple-50 text-purple-600 border border-purple-100',
-  React:        'bg-cyan-50 text-cyan-600 border border-cyan-100',
-  'Tailwind CSS': 'bg-teal-50 text-teal-600 border border-teal-100',
+  Bootstrap:    'bg-purple-50 text-purple-700 border border-purple-100',
+  React:        'bg-cyan-50 text-cyan-700 border border-cyan-100',
+  'Tailwind CSS': 'bg-teal-50 text-teal-700 border border-teal-100',
 }
 
 const filters = ['All', 'Real Estate', 'Hospitality', 'E-Commerce', 'WordPress']
@@ -498,7 +499,7 @@ export default function Portfolio() {
   return (
     <>
       <SEO
-        title="Our Portfolio | Web Development Projects — Selections Technologies"
+        title="Portfolio | Web Development Work"
         description="Explore 42+ real-world projects by Selections Technologies — WordPress websites, WooCommerce stores, custom web development for clients across the UK, UAE, Philippines and worldwide."
         keywords="web development portfolio UK, WordPress projects, WooCommerce store development, IT company portfolio, website development examples, Shopify developer portfolio, digital agency work UK, Selections Technologies projects, web design portfolio UK"
         canonical="/portfolio"
@@ -513,35 +514,30 @@ export default function Portfolio() {
         <div className="absolute bottom-10 left-1/4 w-64 h-64 bg-brand-blue rounded-full blur-3xl opacity-10 pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.span
+          <m.div initial={false} animate="visible" variants={stagger} className="motion-safe:animate-fade-up">
+            <m.span
               variants={fadeUp}
               className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4"
             >
               Our Work
-            </motion.span>
-            <motion.h1
+            </m.span>
+            <m.h1
               variants={fadeUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6"
             >
               Our <span className="text-gradient">Portfolio</span>
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
               variants={fadeUp}
               className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed"
             >
               Real-world projects delivered across the UK and worldwide — from WordPress sites and WooCommerce stores to custom web solutions.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </div>
 
         {/* Stats bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="relative max-w-4xl mx-auto px-4 mt-14"
-        >
+        <div className="motion-safe:animate-fade-up [animation-delay:200ms] relative max-w-4xl mx-auto px-4 mt-14">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {stats.map(({ end, decimals, suffix, label }) => (
               <div key={label} className="text-center glass rounded-2xl py-4 px-2">
@@ -552,7 +548,7 @@ export default function Portfolio() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
       </section>
@@ -562,7 +558,7 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Filter tabs */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -580,16 +576,17 @@ export default function Portfolio() {
                 }`}
               >
                 {f}
-                <span className={`ml-2 text-xs ${active === f ? 'text-blue-100' : 'text-slate-400'}`}>
+                <span className={`ml-2 text-xs ${active === f ? 'text-white' : 'text-slate-500'}`}>
                   ({f === 'All' ? projects.length : projects.filter((p) => p.category === f).length})
                 </span>
               </button>
             ))}
-          </motion.div>
+          </m.div>
 
           {/* Cards grid */}
+          <h2 className="sr-only">Client projects</h2>
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key={active}
               initial="hidden"
               animate="visible"
@@ -597,7 +594,7 @@ export default function Portfolio() {
               className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7"
             >
               {filtered.map((project, i) => (
-                <motion.div
+                <m.div
                   key={project.id}
                   custom={i}
                   variants={fadeUp}
@@ -643,6 +640,10 @@ export default function Portfolio() {
                         <img
                           src={getFavicon(project.live)}
                           alt=""
+                          width="24"
+                          height="24"
+                          loading="lazy"
+                          decoding="async"
                           className="w-6 h-6 object-contain"
                           onError={() => setFaviconErrors((prev) => ({ ...prev, [project.id]: true }))}
                         />
@@ -666,7 +667,7 @@ export default function Portfolio() {
                     <div className="flex items-start justify-between gap-2 mb-2">
                       <div>
                         <h3 className="text-base font-bold text-navy leading-tight">{project.name}</h3>
-                        <p className="text-xs text-brand-cyan font-semibold mt-0.5">{project.tagline}</p>
+                        <p className="text-xs text-cyan-700 font-semibold mt-0.5">{project.tagline}</p>
                       </div>
                       <a
                         href={project.live}
@@ -695,9 +696,9 @@ export default function Portfolio() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
       </section>
@@ -705,7 +706,7 @@ export default function Portfolio() {
       {/* ─── CTA ────────────────────────────────────────────── */}
       <section className="py-20 bg-gradient-to-br from-navy via-navy to-brand-blue/20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -724,7 +725,7 @@ export default function Portfolio() {
             >
               Start Your Project
             </a>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </>

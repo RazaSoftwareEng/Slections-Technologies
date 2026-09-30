@@ -2,20 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font display swap — prevents invisible text during font load (PageSpeed fix) */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-display: swap;
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Self-hosted via @fontsource-variable/inter (imported in main.jsx, font-display: swap) */
+    font-family: 'Inter Variable', system-ui, -apple-system, sans-serif;
     background-color: #F8FAFC;
     color: #1E293B;
     overflow-x: hidden;

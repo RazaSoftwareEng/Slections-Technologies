@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import SEO from '../components/SEO'
 import { MdEmail, MdPhone, MdLocationOn, MdSend } from 'react-icons/md'
 import { HiOutlineCheckCircle } from 'react-icons/hi'
@@ -32,7 +32,7 @@ const contactInfo = [
     label: 'Phone / WhatsApp',
     value: '+44 7448 091908',
     href: 'tel:+447448091908',
-    color: 'text-brand-cyan',
+    color: 'text-cyan-700',
     bg: 'bg-brand-cyan/10',
   },
   {
@@ -115,7 +115,7 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contact Us | Get a Free Quote — Selections Technologies"
+        title="Contact Us | Get a Free Quote"
         description="Contact Selections Technologies for professional web development, software solutions, mobile apps, and IT consulting. Reach us via email, phone, or WhatsApp. Based in the UK, serving worldwide."
         keywords="contact Selections Technologies, hire web developer UK, web development quote UK, software development inquiry, Shopify developer contact, WordPress developer hire, digital marketing contact, graphic designer hire UK, mobile app development quote, IT consulting inquiry, WhatsApp IT support UK, affordable web developer, get website made UK, ecommerce store UK, Selection Technologies contact, Selections Tech contact"
         canonical="/contact"
@@ -128,26 +128,26 @@ export default function Contact() {
         <div className="absolute top-10 left-1/3 w-96 h-96 bg-brand-blue rounded-full blur-3xl opacity-10 pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.span
+          <m.div initial={false} animate="visible" variants={stagger} className="motion-safe:animate-fade-up">
+            <m.span
               variants={fadeUp}
               className="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-cyan text-xs font-semibold tracking-widest uppercase mb-4"
             >
               Get In Touch
-            </motion.span>
-            <motion.h1
+            </m.span>
+            <m.h1
               variants={fadeUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6"
             >
               Contact <span className="text-gradient">Us</span>
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
               variants={fadeUp}
               className="max-w-xl mx-auto text-slate-400 text-lg leading-relaxed"
             >
               Have a project in mind or need IT advice? We'd love to hear from you. Let's start a conversation.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
       </section>
@@ -158,7 +158,7 @@ export default function Contact() {
           <div className="grid lg:grid-cols-5 gap-12">
 
             {/* Left — Contact Info + Map */}
-            <motion.div
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-80px' }}
@@ -167,7 +167,7 @@ export default function Contact() {
             >
               {/* Info cards */}
               {contactInfo.map(({ icon: Icon, label, value, href, color, bg }) => (
-                <motion.div
+                <m.div
                   key={label}
                   variants={fadeUp}
                   className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
@@ -176,7 +176,7 @@ export default function Contact() {
                     <Icon className={`${color} text-xl`} size={22} />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1">{label}</p>
+                    <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">{label}</p>
                     {href ? (
                       <a href={href} className={`text-sm font-semibold ${color} hover:underline break-all`}>
                         {value}
@@ -185,20 +185,20 @@ export default function Contact() {
                       <p className="text-sm font-semibold text-navy">{value}</p>
                     )}
                   </div>
-                </motion.div>
+                </m.div>
               ))}
 
               {/* Company card */}
-              <motion.div
+              <m.div
                 variants={fadeUp}
                 className="p-5 rounded-2xl bg-gradient-to-br from-brand-blue/10 to-brand-cyan/5 border border-brand-blue/20"
               >
-                <h3 className="font-bold text-navy text-base mb-1">Selections Technologies</h3>
+                <p className="font-bold text-navy text-base mb-1">Selections Technologies</p>
                 <p className="text-sm text-slate-500">Your trusted technology partner for innovative digital solutions.</p>
-              </motion.div>
+              </m.div>
 
               {/* Google Map */}
-              <motion.div
+              <m.div
                 variants={fadeUp}
                 className="rounded-2xl overflow-hidden border border-slate-200 h-56 shadow-sm"
               >
@@ -212,11 +212,11 @@ export default function Contact() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Right — Form */}
-            <motion.div
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-80px' }}
@@ -225,7 +225,7 @@ export default function Contact() {
             >
               <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-8 sm:p-10">
                 {submitted ? (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center justify-center h-full text-center py-12"
@@ -243,7 +243,7 @@ export default function Contact() {
                     >
                       Send Another Message
                     </button>
-                  </motion.div>
+                  </m.div>
                 ) : (
                   <>
                     <h2 className="text-2xl font-extrabold text-navy mb-2">Send Us a Message</h2>
@@ -350,7 +350,7 @@ export default function Contact() {
                   </>
                 )}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>

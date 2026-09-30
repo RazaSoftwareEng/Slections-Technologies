@@ -18,8 +18,15 @@ export default function CountUp({ end, decimals = 0, suffix = '', duration = 2 }
 
   return (
     <span ref={ref}>
-      {value.toFixed(decimals)}
-      {suffix}
+      {/* Final value for crawlers and screen readers; the animated number is visual only */}
+      <span className="sr-only">
+        {end.toFixed(decimals)}
+        {suffix}
+      </span>
+      <span aria-hidden="true">
+        {value.toFixed(decimals)}
+        {suffix}
+      </span>
     </span>
   )
 }

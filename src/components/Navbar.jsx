@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { HiMenuAlt3, HiX, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi'
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa'
-import logo from '../assests/logo.png'
+import logo from '../assests/logo.webp'
 
 const socials = [
   { icon: FaFacebookF, href: 'https://www.facebook.com/selections.technologies', label: 'Facebook' },
@@ -38,7 +38,7 @@ export default function Navbar() {
       {/* Top info bar */}
       <AnimatePresence initial={false}>
         {!scrolled && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -71,7 +71,7 @@ export default function Navbar() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
@@ -85,7 +85,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Selections Technologies — Web Development UK" className="h-12 w-auto object-contain" width="200" height="48" fetchPriority="high" />
+          <img src={logo} alt="Selections Technologies — Web Development UK" className="h-12 w-auto object-contain" width="200" height="48" fetchpriority="high" />
         </Link>
 
         {/* Desktop Nav */}
@@ -128,7 +128,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -161,7 +161,7 @@ export default function Navbar() {
                 Get Started
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

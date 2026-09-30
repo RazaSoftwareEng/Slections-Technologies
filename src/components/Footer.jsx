@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md'
-import logo from '../assests/logo.png'
+import logo from '../assests/logo.webp'
 
 const quickLinks = [
   { to: '/', label: 'Home' },
@@ -15,12 +15,13 @@ const quickLinks = [
 ]
 
 const services = [
-  'Web Development',
-  'Shopify Store Development',
-  'WordPress Development',
-  'Mobile App Development',
-  'Digital Marketing & SEO',
-  'Graphic Designing',
+  { slug: 'web-development', label: 'Web Development' },
+  { slug: 'shopify-development', label: 'Shopify Store Development' },
+  { slug: 'wordpress-development', label: 'WordPress Development' },
+  { slug: 'mobile-app-development', label: 'Mobile App Development' },
+  { slug: 'seo', label: 'SEO Services' },
+  { slug: 'ai-chatbot-development', label: 'AI Chatbot Development' },
+  { slug: 'digital-marketing', label: 'Digital Marketing' },
 ]
 
 const socials = [
@@ -85,13 +86,13 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Our Services</h3>
             <ul className="space-y-3">
               {services.map((s) => (
-                <li key={s}>
+                <li key={s.slug}>
                   <Link
-                    to="/services"
+                    to={`/services/${s.slug}`}
                     className="text-sm text-slate-400 hover:text-brand-cyan transition-colors flex items-center gap-2"
                   >
                     <span className="w-1 h-1 bg-brand-cyan rounded-full shrink-0" />
-                    {s}
+                    {s.label}
                   </Link>
                 </li>
               ))}
@@ -124,10 +125,10 @@ export default function Footer() {
 
         {/* Divider */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-400">
             &copy; {new Date().getFullYear()} Selections Technologies. All rights reserved.
           </p>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-400">
             Croydon High Street, UK &nbsp;·&nbsp;
             <span className="text-brand-cyan">info@selectionstechnologies.com</span>
           </p>
