@@ -6,6 +6,8 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FloatingButtons from './components/FloatingButtons'
 import ScrollToTop from './components/ScrollToTop'
+import SmoothScroll from './components/SmoothScroll'
+import ScrollProgress from './components/ScrollProgress'
 import Home from './pages/Home'
 const Services = lazy(() => import('./pages/Services'))
 const About = lazy(() => import('./pages/About'))
@@ -16,6 +18,14 @@ const Portfolio = lazy(() => import('./pages/Portfolio'))
 const Blog = lazy(() => import('./pages/Blog'))
 const BlogPost = lazy(() => import('./pages/BlogPost'))
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
+const Team = lazy(() => import('./pages/Team'))
+const Terms = lazy(() => import('./pages/Terms'))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const RefundPolicy = lazy(() => import('./pages/RefundPolicy'))
+const Gdpr = lazy(() => import('./pages/Gdpr'))
+const Security = lazy(() => import('./pages/Security'))
+const CookiePolicy = lazy(() => import('./pages/CookiePolicy'))
+const BookDemo = lazy(() => import('./pages/BookDemo'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 const BASE = 'https://selectionstechnologies.com'
@@ -100,8 +110,13 @@ const structuredData = {
       founder: {
         '@type': 'Person',
         name: 'Ali Raza',
-        jobTitle: 'Founder & CEO',
+        jobTitle: 'CEO & Founder',
         url: 'https://alirazadeveloper75.github.io/portfolio/',
+        sameAs: [
+          'https://www.linkedin.com/in/aliraza-software-eng/',
+          'https://www.facebook.com/aliraza.software.eng/',
+          'https://www.instagram.com/aliraza.software.eng/',
+        ],
       },
       foundingDate: '2019',
       numberOfEmployees: {
@@ -140,7 +155,9 @@ export default function App() {
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
+      <SmoothScroll />
       <ScrollToTop />
+      <ScrollProgress />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
@@ -152,10 +169,18 @@ export default function App() {
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/book-demo" element={<BookDemo />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/refund-policy" element={<RefundPolicy />} />
+              <Route path="/gdpr" element={<Gdpr />} />
+              <Route path="/security" element={<Security />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

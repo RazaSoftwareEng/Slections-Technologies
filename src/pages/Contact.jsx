@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { m } from 'framer-motion'
 import SEO from '../components/SEO'
+import { WEB3FORMS_KEY } from '../data/forms'
 import { MdEmail, MdPhone, MdLocationOn, MdSend } from 'react-icons/md'
 import { HiOutlineCheckCircle } from 'react-icons/hi'
 
@@ -18,30 +19,26 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 }
 
-const contactInfo = [
+const offices = [
   {
-    icon: MdEmail,
-    label: 'Email',
-    value: 'info@selectionstechnologies.com',
-    href: 'mailto:info@selectionstechnologies.com',
-    color: 'text-brand-blue',
-    bg: 'bg-brand-blue/10',
+    key: 'uk',
+    country: 'United Kingdom',
+    city: 'London',
+    phoneLabel: 'Phone / WhatsApp',
+    phone: '+44 7448 091908',
+    tel: '+447448091908',
+    address: 'Selections Technologies, Croydon High Street, UK',
+    map: 'Croydon+High+Street,+Croydon,+UK',
   },
   {
-    icon: MdPhone,
-    label: 'Phone / WhatsApp',
-    value: '+44 7448 091908',
-    href: 'tel:+447448091908',
-    color: 'text-cyan-700',
-    bg: 'bg-brand-cyan/10',
-  },
-  {
-    icon: MdLocationOn,
-    label: 'Address',
-    value: 'Selections Technologies, Croydon High Street, UK',
-    href: null,
-    color: 'text-purple-400',
-    bg: 'bg-purple-400/10',
+    key: 'pk',
+    country: 'Pakistan',
+    city: 'Lahore',
+    phoneLabel: 'Phone',
+    phone: '+92 300 3209005',
+    tel: '+923003209005',
+    address: 'Selections Technologies, 28 Davis Road, Lahore, PK',
+    map: '28+Davis+Road,+Lahore,+Pakistan',
   },
 ]
 
@@ -61,6 +58,7 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm)
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [mapOffice, setMapOffice] = useState('uk')
   const [errors, setErrors] = useState({})
 
   const validate = () => {
@@ -89,7 +87,7 @@ export default function Contact() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: '32381f7f-db3c-4f98-9daa-1ea00f3fcdb7',
+          access_key: WEB3FORMS_KEY,
           subject: `New Contact Form Submission from ${form.name}`,
           from_name: 'Selections Technologies Website',
           name: form.name,
@@ -165,49 +163,83 @@ export default function Contact() {
               variants={stagger}
               className="lg:col-span-2 flex flex-col gap-6"
             >
-              {/* Info cards */}
-              {contactInfo.map(({ icon: Icon, label, value, href, color, bg }) => (
+              {/* Email */}
+              <m.div
+                variants={fadeUp}
+                className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="shrink-0 p-3 rounded-xl bg-brand-blue/10">
+                  <MdEmail className="text-brand-blue" size={22} />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Email</p>
+                  <a href="mailto:info@selectionstechnologies.com" className="text-sm font-semibold text-brand-blue hover:underline break-all">
+                    info@selectionstechnologies.com
+                  </a>
+                </div>
+              </m.div>
+
+              {/* Offices */}
+              {offices.map(({ key, country, city, phoneLabel, phone, tel, address }) => (
                 <m.div
-                  key={label}
+                  key={key}
                   variants={fadeUp}
-                  className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+                  className="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className={`shrink-0 p-3 rounded-xl ${bg}`}>
-                    <Icon className={`${color} text-xl`} size={22} />
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="font-bold text-navy">{country} Office</p>
+                    <span className="rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold text-brand-blue">{city}</span>
                   </div>
-                  <div>
-                    <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">{label}</p>
-                    {href ? (
-                      <a href={href} className={`text-sm font-semibold ${color} hover:underline break-all`}>
-                        {value}
-                      </a>
-                    ) : (
-                      <p className="text-sm font-semibold text-navy">{value}</p>
-                    )}
+                  <div className="space-y-3.5">
+                    <div className="flex items-start gap-3">
+                      <div className="shrink-0 p-2.5 rounded-xl bg-brand-cyan/10">
+                        <MdPhone className="text-cyan-700" size={18} />
+                      </div>
+                      <div>
+                        <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-0.5">{phoneLabel}</p>
+                        <a href={`tel:${tel}`} className="text-sm font-semibold text-cyan-700 hover:underline">
+                          {phone}
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="shrink-0 p-2.5 rounded-xl bg-purple-400/10">
+                        <MdLocationOn className="text-purple-400" size={18} />
+                      </div>
+                      <div>
+                        <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-0.5">Address</p>
+                        <p className="text-sm font-semibold text-navy">{address}</p>
+                      </div>
+                    </div>
                   </div>
                 </m.div>
               ))}
 
-              {/* Company card */}
-              <m.div
-                variants={fadeUp}
-                className="p-5 rounded-2xl bg-gradient-to-br from-brand-blue/10 to-brand-cyan/5 border border-brand-blue/20"
-              >
-                <p className="font-bold text-navy text-base mb-1">Selections Technologies</p>
-                <p className="text-sm text-slate-500">Your trusted technology partner for innovative digital solutions.</p>
-              </m.div>
-
-              {/* Google Map */}
-              <m.div
-                variants={fadeUp}
-                className="rounded-2xl overflow-hidden border border-slate-200 h-56 shadow-sm"
-              >
+              {/* Google Map with office switcher */}
+              <m.div variants={fadeUp} className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm">
+                <div className="flex gap-1 p-1.5 border-b border-slate-100" role="tablist" aria-label="Office map">
+                  {offices.map(({ key, city }) => (
+                    <button
+                      key={key}
+                      type="button"
+                      role="tab"
+                      aria-selected={mapOffice === key}
+                      onClick={() => setMapOffice(key)}
+                      className={`flex-1 rounded-xl px-3 py-2 text-sm font-semibold transition-colors ${
+                        mapOffice === key ? 'bg-brand-blue text-white' : 'text-slate-600 hover:bg-surface'
+                      }`}
+                    >
+                      {city}
+                    </button>
+                  ))}
+                </div>
                 <iframe
-                  title="Selections Technologies Location"
-                  src="https://maps.google.com/maps?q=Croydon+High+Street,+Croydon,+UK&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  key={mapOffice}
+                  title={`Selections Technologies ${offices.find((o) => o.key === mapOffice).city} office location`}
+                  src={`https://maps.google.com/maps?q=${offices.find((o) => o.key === mapOffice).map}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
                   width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
+                  height="224"
+                  style={{ border: 0, display: 'block' }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

@@ -7,6 +7,27 @@
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Lenis smooth scrolling (see SmoothScroll.jsx) */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
   body {
     /* Self-hosted via @fontsource-variable/inter (imported in main.jsx, font-display: swap) */
     font-family: 'Inter Variable', system-ui, -apple-system, sans-serif;

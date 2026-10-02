@@ -6,6 +6,7 @@ import { Writable } from 'node:stream'
 import App from './App.jsx'
 import { services } from './data/services.js'
 import { blogs } from './data/blogs.js'
+import { legalPages } from './data/legal.js'
 
 // Every URL that gets its own pre-rendered HTML file
 export const routes = [
@@ -19,6 +20,9 @@ export const routes = [
   ...blogs.map((b) => `/blog/${b.slug}`),
   '/about',
   '/contact',
+  '/book-demo',
+  '/team',
+  ...legalPages.map((p) => p.to),
   '/404',
 ]
 

@@ -2,7 +2,7 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import { m } from 'framer-motion'
 import SEO from '../components/SEO'
 import { blogs } from '../data/blogs'
-import { HiArrowLeft, HiClock, HiUser, HiArrowRight, HiOutlineScale, HiOutlineCurrencyDollar, HiOutlineSearch, HiOutlineDeviceMobile, HiOutlineClipboardCheck, HiOutlineShieldCheck } from 'react-icons/hi'
+import { HiArrowLeft, HiClock, HiUser, HiArrowRight, HiOutlineScale, HiOutlineCurrencyDollar, HiOutlineSearch, HiOutlineDeviceMobile, HiOutlineClipboardCheck, HiOutlineShieldCheck, HiOutlineCalendar } from 'react-icons/hi'
 import { FaWhatsapp, FaShopify } from 'react-icons/fa'
 import { MdCampaign, MdSmartToy } from 'react-icons/md'
 
@@ -28,20 +28,26 @@ function PostIcon({ name }) {
   )
 }
 
+const slugify = (s) => s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+
 function ContentBlock({ block }) {
   switch (block.type) {
     case 'p':
-      return <p className="text-slate-600 leading-relaxed text-base mb-5">{block.text}</p>
+      return <p className="text-slate-600 leading-relaxed text-base sm:text-[17px] mb-5">{block.text}</p>
     case 'h2':
-      return <h2 className="text-xl sm:text-2xl font-extrabold text-navy mt-10 mb-4 leading-tight">{block.text}</h2>
+      return (
+        <h2 id={slugify(block.text)} className="scroll-mt-28 text-2xl sm:text-[28px] font-extrabold text-navy mt-12 mb-4 leading-tight">
+          {block.text}
+        </h2>
+      )
     case 'h3':
       return <h3 className="text-lg font-bold text-navy mt-7 mb-3">{block.text}</h3>
     case 'ul':
       return (
         <ul className="space-y-2 mb-5 ml-1">
           {block.items.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-slate-600 text-sm leading-relaxed">
-              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-blue shrink-0" />
+            <li key={i} className="flex items-start gap-3 text-slate-600 text-base leading-relaxed">
+              <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-brand-blue shrink-0" />
               {item}
             </li>
           ))}
@@ -51,7 +57,7 @@ function ContentBlock({ block }) {
       return (
         <ol className="space-y-2.5 mb-5 ml-1">
           {block.items.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-slate-600 text-sm leading-relaxed">
+            <li key={i} className="flex items-start gap-3 text-slate-600 text-base leading-relaxed">
               <span className="shrink-0 w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
               {item}
             </li>
@@ -62,7 +68,7 @@ function ContentBlock({ block }) {
       return (
         <div className="my-6 p-5 rounded-2xl bg-brand-blue/5 border border-brand-blue/20 flex items-start gap-3">
           <span className="text-brand-blue text-lg mt-0.5 shrink-0">💡</span>
-          <p className="text-brand-blue text-sm font-medium leading-relaxed">{block.text}</p>
+          <p className="text-brand-blue text-[15px] font-medium leading-relaxed">{block.text}</p>
         </div>
       )
     case 'table':
@@ -100,6 +106,12 @@ export default function BlogPost() {
   if (!post) return <Navigate to="/blog" replace />
 
   const currentIndex = blogs.findIndex((b) => b.slug === slug)
+  const headings = post.content.filter((b) => b.type === 'h2').map((b) => b.text)
+  // Same category first, then the rest, so the sidebar suggests the most relevant reads
+  const related = [
+    ...blogs.filter((b) => b.slug !== slug && b.category === post.category),
+    ...blogs.filter((b) => b.slug !== slug && b.category !== post.category),
+  ].slice(0, 4)
   const prev = blogs[currentIndex - 1] || null
   const next = blogs[currentIndex + 1] || null
 
@@ -143,7 +155,7 @@ export default function BlogPost() {
       <section className="relative pt-40 pb-24 overflow-hidden" style={{ background: post.coverGradient }}>
         <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 60%)' }} />
         <div className="absolute inset-0 hero-grid opacity-20" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <Link to="/blog" className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-medium mb-8 transition-colors">
               <HiArrowLeft size={16} /> Back to Blog
@@ -157,10 +169,10 @@ export default function BlogPost() {
                 {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight mb-5">
+            <h1 className="max-w-4xl text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight mb-5">
               {post.title}
             </h1>
-            <p className="text-white/80 text-base leading-relaxed max-w-2xl">{post.excerpt}</p>
+            <p className="text-white/80 text-lg leading-relaxed max-w-3xl">{post.excerpt}</p>
             <div className="flex items-center gap-2 mt-6">
               <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-xs font-bold">ST</div>
               <span className="flex items-center gap-1 text-white/70 text-sm"><HiUser size={13} />{post.author}</span>
@@ -171,15 +183,15 @@ export default function BlogPost() {
 
       {/* ─── Article Body ─────────────────── */}
       <section className="py-16 bg-surface">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] xl:gap-14">
 
             {/* Content */}
             <m.article
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="lg:col-span-2"
+              className="min-w-0 rounded-3xl bg-white border border-slate-100 shadow-sm p-6 sm:p-10 lg:p-12"
             >
               {post.content.map((block, i) => (
                 <ContentBlock key={i} block={block} />
@@ -219,47 +231,76 @@ export default function BlogPost() {
               </div>
             </m.article>
 
-            {/* Sidebar */}
+            {/* Sidebar: one sticky column so its cards never overlap */}
             <m.aside
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-6"
             >
-              {/* CTA Card */}
-              <div className="bg-gradient-to-br from-navy to-brand-blue/80 rounded-2xl p-6 text-white sticky top-24">
-                <h3 className="font-extrabold text-base mb-2">Need Help?</h3>
-                <p className="text-white/70 text-xs leading-relaxed mb-5">
-                  Get a free consultation from our team. We'll help you choose the right solution for your business.
-                </p>
-                <Link to="/contact" className="block text-center py-2.5 bg-white text-navy text-xs font-bold rounded-xl hover:bg-blue-50 transition-colors mb-3">
-                  Get Free Quote
-                </Link>
-                <a
-                  href="https://wa.me/447448091908"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-2.5 bg-green-700 hover:bg-green-800 text-white text-xs font-bold rounded-xl transition-colors"
-                >
-                  <FaWhatsapp size={14} /> WhatsApp Us
-                </a>
-              </div>
+              <div className="space-y-6 lg:sticky lg:top-28">
+                {/* On this page */}
+                {headings.length > 0 && (
+                  <nav className="hidden lg:block rounded-2xl bg-white border border-slate-100 shadow-sm p-5" aria-label="On this page">
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">On this page</p>
+                    <ol data-lenis-prevent className="max-h-64 space-y-2 overflow-y-auto pr-1 text-sm">
+                      {headings.map((h) => (
+                        <li key={h}>
+                          <a href={`#${slugify(h)}`} className="block leading-snug text-slate-600 hover:text-brand-blue transition-colors">
+                            {h}
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </nav>
+                )}
 
-              {/* Related Posts */}
-              <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
-                <h3 className="font-extrabold text-navy text-sm mb-4">More Articles</h3>
-                <div className="space-y-4">
-                  {blogs.filter((b) => b.slug !== slug).slice(0, 4).map((b) => (
-                    <Link key={b.id} to={`/blog/${b.slug}`} className="group flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-xl shrink-0 flex items-center justify-center" style={{ background: b.coverGradient }}>
-                        <span className="text-white text-xs font-bold">{b.id}</span>
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-navy leading-snug group-hover:text-brand-blue transition-colors line-clamp-2">{b.title}</p>
-                        <span className="text-xs text-slate-500 mt-0.5 block">{b.readTime}</span>
-                      </div>
-                    </Link>
-                  ))}
+                {/* CTA Card */}
+                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy via-[#13286b] to-brand-blue p-6 text-white shadow-xl shadow-brand-blue/20">
+                  <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-cyan/30 blur-2xl" />
+                  <h3 className="relative font-extrabold text-lg mb-2">Need help with your project?</h3>
+                  <p className="relative text-white/75 text-sm leading-relaxed mb-5">
+                    Get a free consultation. We'll help you choose the right solution for your business.
+                  </p>
+                  <Link
+                    to="/book-demo"
+                    className="relative flex items-center justify-center gap-2 py-3 bg-white text-navy text-sm font-bold rounded-xl hover:bg-blue-50 transition-colors mb-3"
+                  >
+                    <HiOutlineCalendar size={16} /> Book a Free Demo
+                  </Link>
+                  <a
+                    href="https://wa.me/447448091908"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative flex items-center justify-center gap-2 py-3 bg-[#25D366] hover:bg-green-500 text-white text-sm font-bold rounded-xl transition-colors"
+                  >
+                    <FaWhatsapp size={16} /> WhatsApp Us
+                  </a>
+                </div>
+
+                {/* Related Posts */}
+                <div className="rounded-2xl bg-white border border-slate-100 shadow-sm p-5">
+                  <h3 className="font-extrabold text-navy text-base mb-4">More Articles</h3>
+                  <div className="space-y-3">
+                    {related.map((b) => {
+                      const Icon = iconMap[b.icon] || HiArrowRight
+                      return (
+                        <Link key={b.id} to={`/blog/${b.slug}`} className="group -mx-2 flex items-start gap-3 rounded-xl p-2 hover:bg-surface transition-colors">
+                          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white" style={{ background: b.coverGradient }}>
+                            <Icon size={20} />
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block text-sm font-semibold text-navy leading-snug group-hover:text-brand-blue transition-colors line-clamp-2">{b.title}</span>
+                            <span className="mt-0.5 block text-xs text-slate-500">
+                              {b.category} · {b.readTime}
+                            </span>
+                          </span>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                  <Link to="/blog" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:gap-2.5 transition-all">
+                    All articles <HiArrowRight size={15} />
+                  </Link>
                 </div>
               </div>
             </m.aside>

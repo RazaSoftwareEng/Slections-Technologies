@@ -6,6 +6,7 @@ import {
   HiOutlineTrendingUp,
   HiOutlineUserGroup,
   HiOutlineCollection,
+  HiOutlineChip,
 } from 'react-icons/hi'
 import { FaShopify, FaWordpress, FaRobot } from 'react-icons/fa6'
 import { MdDesignServices, MdCampaign, MdStorefront, MdSearch } from 'react-icons/md'
@@ -320,6 +321,49 @@ export const services = [
       { q: 'Can my app connect to my website or CRM?', a: 'Yes. We build APIs so your app shares data with your website, CRM or other systems.' },
     ],
     related: ['custom-software-development', 'web-development', 'graphic-design'],
+  },
+  {
+    slug: 'ai-automation',
+    icon: HiOutlineChip,
+    title: 'AI Automation',
+    desc: 'AI chatbots, workflow automation and smart lead generation that save time and grow your business on autopilot.',
+    features: ['AI Chatbots', 'Workflow Automation', 'AI Lead Generation', 'CRM & App Integrations'],
+    gradient: 'from-indigo-500/20 to-indigo-700/5',
+    iconBg: 'bg-indigo-500/15',
+    iconColor: 'text-indigo-400',
+    border: 'border-indigo-500/20 hover:border-indigo-500/50',
+    metaTitle: 'AI Automation Agency UK | Chatbots, Workflows & Lead Generation',
+    metaDescription:
+      'AI automation for UK businesses — AI chatbots, workflow automation, AI lead generation and CRM integrations that save time, cut manual work and capture more leads.',
+    keywords: 'AI automation UK, AI automation agency, business process automation, AI chatbot, workflow automation, n8n automation, Zapier automation, AI lead generation, AI agents for business',
+    tagline: 'Let AI handle the repetitive work — so your team can focus on growing the business.',
+    intro: [
+      'Most businesses lose hours every week to repetitive tasks: answering the same questions, copying data between systems, chasing leads and sending follow-ups. Our AI automation services take that work off your plate.',
+      'We combine AI chatbots, smart workflows and integrations with the tools you already use — your website, WhatsApp, email, CRM and spreadsheets — so enquiries are answered instantly, leads are followed up automatically and your data stays organised.',
+    ],
+    offerings: [
+      { title: 'AI Chatbots', desc: 'Website and WhatsApp chatbots trained on your business to answer questions and book appointments 24/7.' },
+      { title: 'Workflow Automation', desc: 'Automate repetitive tasks like data entry, invoicing, reminders and reports across your apps.' },
+      { title: 'AI Lead Generation', desc: 'Capture, score and follow up leads automatically so no enquiry is missed.' },
+      { title: 'AI Agents', desc: 'AI assistants that complete multi-step tasks such as qualifying leads, drafting replies and updating records.' },
+      { title: 'CRM & App Integrations', desc: 'Connect your CRM, email, calendar, spreadsheets and payment tools so data flows automatically.' },
+      { title: 'Document & Email Processing', desc: 'Extract information from emails, forms and documents and send it where it needs to go.' },
+    ],
+    benefits: [
+      'Hours saved every week on manual tasks',
+      'Instant replies to customers, day and night',
+      'More leads captured and followed up',
+      'Fewer errors from copy-and-paste work',
+      'Systems that scale as your business grows',
+    ],
+    tools: ['OpenAI', 'Google Gemini', 'n8n', 'Zapier', 'Make', 'WhatsApp Business API', 'Custom APIs'],
+    faqs: [
+      { q: 'What can be automated in my business?', a: 'Common examples are answering enquiries, booking appointments, following up leads, moving data between apps, sending reminders and creating reports. We start with a free consultation to find the tasks that will save you the most time.' },
+      { q: 'Do I need to change the software I already use?', a: 'Usually not. We connect automations to the tools you already use, such as your website, WhatsApp, email, CRM and Google Sheets.' },
+      { q: 'Is AI automation suitable for small businesses?', a: 'Yes. Small teams often benefit the most, because automation removes repetitive work without needing to hire extra staff.' },
+      { q: 'Will a human still be involved?', a: 'Yes. We design automations so your team stays in control and steps in whenever a personal touch or decision is needed.' },
+    ],
+    related: ['ai-chatbot-development', 'ai-lead-generation', 'crm-development'],
   },
   {
     slug: 'ai-chatbot-development',

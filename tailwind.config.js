@@ -21,11 +21,14 @@ export default {
       },
       fontFamily: {
         sans: ['"Inter Variable"', 'Inter', 'system-ui', 'sans-serif'],
+        hand: ['Caveat', 'cursive'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'fade-up': 'fade-up 0.7s ease-out both',
+        marquee: 'marquee 45s linear infinite',
+        'marquee-reverse': 'marquee 45s linear infinite reverse',
       },
       keyframes: {
         'fade-up': {
@@ -35,6 +38,11 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-20px)' },
+        },
+        // Content is rendered twice, so shifting by half its width loops seamlessly
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },
